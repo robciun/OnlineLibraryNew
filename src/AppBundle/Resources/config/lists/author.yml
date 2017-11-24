@@ -1,0 +1,32 @@
+name:
+    default: true
+    label: 'Name'
+    type: text
+    parameters: {  }
+surname:
+    default: true
+    label: 'Surname'
+    type: text
+    parameters: {  }
+born_date:
+    default: true
+    label: 'Date'
+    type: date
+    parameters: {  }
+experience:
+    default: true
+    label: 'Experience'
+    type: text
+    parameters: {  }
+book_count:
+    default: true
+    label: 'Books'
+    type: number
+    parameters: {  }
+
+
+
+
+
+
+

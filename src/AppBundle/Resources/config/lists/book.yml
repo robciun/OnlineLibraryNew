@@ -1,0 +1,61 @@
+title:
+    default: true
+    label: 'Title'
+    type: text
+    parameters: {  }
+author:
+    default: true
+    label: 'Author'
+    type: text
+    parameters: {  }
+release_year:
+    default: true
+    label: 'Release year'
+    type: date
+    parameters: {  }
+language:
+    default: true
+    label: 'Language'
+    type: text
+    parameters: {  }
+pages_number:
+    default: true
+    label: 'Page number'
+    type: number
+    parameters: {  }
+description:
+    default: false
+    label: 'Description'
+    type: text
+comments_count:
+    default: true
+    label: 'Comments'
+    type: number
+    parameters: {  }
+rating:
+    default: true
+    label: 'Rating'
+    type: number
+    parameters: {  }
+readers_count:
+    default: false
+    label: 'Readers'
+    type: number
+last_read_page:
+    default: false
+    label: 'Page'
+    type: number
+genre:
+    default: true
+    label: 'Genre'
+    type: text
+book_type:
+    default: false
+    label: 'Type'
+    type: text
+
+
+
+
+
+
