@@ -1,3 +1,5 @@
-notifications:
-    resource: "@MgiletNotificationBundle/Controller/"
-    type: annotation
+new:
+    path:  /
+    defaults: { _controller: AppBundle:Main:index }
+    requirements:
+    _method:  GET

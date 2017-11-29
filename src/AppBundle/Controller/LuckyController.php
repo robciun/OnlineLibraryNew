@@ -14,14 +14,15 @@ use Symfony\Component\HttpFoundation\Response;
 class LuckyController
 {
     /**
-     * @Route("/lucky/number")
+     * @Route("/lucky")
      */
     public function numberAction()
     {
-        $number = mt_rand(0, 100);
-
-        return new Response(
-            '<html><body>Lucky number: '.$number.'</body></html>'
-        );
+        return new Response('You are lucky boy');
+//        $number = mt_rand(0, 100);
+//
+//        return new Response(
+//            '<html><body>Lucky number: '.$number.'</body></html>'
+//        );
     }
 }

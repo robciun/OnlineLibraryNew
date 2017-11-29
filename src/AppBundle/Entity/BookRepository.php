@@ -1,5 +1,9 @@
 <?php
 
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\EntityRepository;
+
 /**
  * Created by PhpStorm.
  * User: Robertas
@@ -7,13 +11,13 @@
  * Time: 4:47 PM
  */
 
-class BookRepository extends \Doctrine\ORM\EntityRepository
+class BookRepository extends EntityRepository
 {
     public function getValuesList($bookId)
     {
         return $this->createQueryBuilder('b')
             ->where('b.id = :id')->setParameter('id', $bookId)
             ->orderBy('b.id', 'asc')
-            ->getQuery()->getResult();
+            ->getQuery()->getArrayResult();
     }
 }
