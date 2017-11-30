@@ -8,20 +8,60 @@
  */
 namespace AppBundle\Controller;
 
+use AppBundle\Form\Type\LoginType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-class SecurityController extends \Symfony\Bundle\FrameworkBundle\Controller\Controller
+
+
+class SecurityController extends Controller
 {
-    public function loginAction(Request $request, AuthenticationUtils $authUtils)
+//    /**
+//     * @Route("/login", name="user_login")
+//     */
+//    public function loginAction(Request $request, AuthenticationUtils $authUtils)
+//    {
+//        $error = $authUtils->getLastAuthenticationError();
+//
+//        $lastUsername = $authUtils->getLastUsername();
+//
+//        return $this->render('@App/login.html.twig', array(
+//            'last_username' => $lastUsername,
+//            'error'         => $error,
+//        ));
+//    }
+
+    /**
+     * @Route("/login", name="user_login")
+     */
+    public function loginAction(Request $request)
     {
-        $error = $authUtils->getLastAuthenticationError();
+        $authenticationUtils = $this->get('security.authentication_utils');
+        // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
+        // last username entered by the user
+        $lastUsername = $authenticationUtils->getLastUsername();
 
-        $lastUsername = $authUtils->getLastUsername();
+        $form = $this->createForm(LoginType::class, [
+            '_username' => $lastUsername
+        ]);
 
-        return $this->render('security/login.html.twig', array(
-            'last_username' => $lastUsername,
-            'error'         => $error,
-        ));
+        return $this->render(
+            '@App/login.html.twig',
+            array(
+                // last username entered by the user
+                'form' => $form->createView(),
+                'error' => $error
+            )
+        );
+    }
+
+    /**
+     * @Route("/logout", name="user_logout")
+     */
+    public function logoutAction()
+    {
+        throw new \Exception('this should not be reached!');
     }
 }

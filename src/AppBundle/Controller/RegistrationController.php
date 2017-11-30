@@ -8,8 +8,8 @@
  */
 namespace AppBundle\Controller;
 
-use web\Forms\UserType;
-use web\Entity\User;
+use AppBundle\Entity\User;
+use AppBundle\Form\Type\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,7 +17,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class RegistrationController extends Controller
 {
     /**
-     * @Route("/register", name="user_registration")
+     * @Route("/registero", name="user_registrationo")
      */
     public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -34,13 +34,13 @@ class RegistrationController extends Controller
             $em->persist($user);
             $em->flush();
 
-            $this->get('session')->getFlashBag()->add('Successful registration!');
+            //$this->get('session')->getFlashBag()->add('Successful registration!');
 
-            return $this->redirectToRoute('book_new');
+            return $this->redirectToRoute('user_login');
         }
 
         return $this->render(
-            'registration/register.html.twig',
+            '@App/register.html.twig',
             array('form' => $form->createView())
         );
     }

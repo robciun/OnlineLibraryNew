@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Note;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,6 +18,7 @@ class DefaultController extends Controller
      * @param Request $request
      * @param $entityId
      * @return Response
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function indexAction(Request $request, $entityId)
     {
