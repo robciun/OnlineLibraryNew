@@ -11,6 +11,7 @@ namespace AppBundle\Form\Type;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -41,6 +42,8 @@ class BookType extends AbstractType
 
         $builder->add('description', TextType::class);
 
+//        $builder->add('upload_book', FileType::class, array('label' => 'Book (PDF file)'));
+
 //        $builder->add('comments_count', NumberType::class);
 //
 //        $builder->add('rating', NumberType::class);
@@ -49,7 +52,7 @@ class BookType extends AbstractType
 //
 //        $builder->add('last_read_page', NumberType::class);
 
-        $builder->add('save', SubmitType::class);
+//        $builder->add('save', SubmitType::class);
 
         //$builder->add('genre', TextType::class);
 

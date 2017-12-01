@@ -55,6 +55,14 @@ class BookController extends Controller
 
         if ($form->isValid() && $form->isSubmitted()) {
 
+//            $file = $book->getUploadBook();
+//
+//            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+//
+//            $file->move($this->getParameter('books_directory'));
+//
+//            $book->setUploadBook($fileName);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($book);
             $em->flush();

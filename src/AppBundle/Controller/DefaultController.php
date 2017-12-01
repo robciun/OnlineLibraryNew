@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Media;
 use AppBundle\Entity\Note;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -18,7 +19,6 @@ class DefaultController extends Controller
      * @param Request $request
      * @param $entityId
      * @return Response
-     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function indexAction(Request $request, $entityId)
     {
@@ -101,4 +101,57 @@ class DefaultController extends Controller
 //            'entityId' => $entityId,
 //        ]);
     }
+
+    /**
+     * @Route("/fileuploadhandler", name="fileuploadhandler")
+     */
+    public function fileUploadHandler(Request $request) {
+        $output = array('uploaded' => false);
+
+        $file = $request->files->get('file');
+
+        $fileName = md5(uniqid()).'.'.$file->guessExtension();
+
+        $uploadDir = $this->get('kernel')->getRootDir() . '/../web/uploads/';
+        if (!file_exists($uploadDir) && !is_dir($uploadDir)) {
+            mkdir($uploadDir, 0775, true);
+        }
+        if ($file->move($uploadDir, $fileName)) {
+
+            $em = $this->getDoctrine()->getManager();
+
+            $mediaEntity = new Media();
+            $mediaEntity->setFileName($fileName);
+
+            $em->persist($mediaEntity);
+            $em->flush();
+            $output['uploaded'] = true;
+            $output['fileName'] = $fileName;
+        }
+        return new JsonResponse($output);
+    }
+
+//    /**
+//     * @Route("/deletefileresource", name="deleteFileResource")
+//     */
+//    public function deleteResource(Request $request){
+//        $output = array('deleted' => false, 'error' => false);
+//        $mediaID = $request->get('id');
+//        $fileName = $request->get('fileName');
+//        $em = $this->getDoctrine()->getManager();
+//        $media = $em->find('AppBundle:Media', $mediaID);
+//        if ($fileName && $media && $media instanceof Media) {
+//            $uploadDir = $this->get('kernel')->getRootDir() . '/../web/uploads/';
+//            $output['deleted'] = unlink($uploadDir.$fileName);
+//            if ($output['deleted']) {
+//                // delete linked mediaEntity
+//                $em = $this->getDoctrine()->getManager();
+//                $em->remove($media);
+//                $em->flush();
+//            }
+//        } else {
+//            $output['error'] = 'Missing/Incorrect Media ID and/or FileName';
+//        }
+//        return new JsonResponse($output);
+//    }
 }

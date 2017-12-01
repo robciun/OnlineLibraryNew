@@ -2,11 +2,22 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Book
  */
 class Book
 {
+
+//    /**
+//     * @ORM\Column(type="string")
+//     *
+//     * @Assert\NotBlank(message="Please, upload the book as a PDF file.")
+//     * @Assert\File(mimeTypes={ "application/pdf" })
+//     */
+//    private $upload_book;
+
     /**
      * @var integer
      */
@@ -72,6 +83,18 @@ class Book
     {
         return $this->id;
     }
+
+//    public function getUploadBook()
+//    {
+//        return $this->upload_book;
+//    }
+//
+//    public function setUploadBook($uploadBook)
+//    {
+//        $this->upload_book = $uploadBook;
+//
+//        return $this;
+//    }
 
     /**
      * Set title

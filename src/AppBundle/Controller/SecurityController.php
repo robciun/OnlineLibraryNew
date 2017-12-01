@@ -62,6 +62,7 @@ class SecurityController extends Controller
      */
     public function logoutAction()
     {
+        //return $this->redirectToRoute('user_login');
         throw new \Exception('this should not be reached!');
     }
 }
