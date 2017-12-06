@@ -17,6 +17,12 @@ AppBundle\Entity\Book:
         release_year:
             type: date
             nullable: true
+        publisher:
+            type: string
+            length: 255
+        genre:
+            type: string
+            length: 255
         language:
             type: string
             length: 255

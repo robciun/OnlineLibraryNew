@@ -25,6 +25,9 @@ security:
 
             logout:
                 path: /logout
+
+            form_login:
+                default_target_path: /home
             # activate different ways to authenticate
 
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate

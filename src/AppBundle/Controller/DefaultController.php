@@ -82,8 +82,8 @@ class DefaultController extends Controller
     public function getNotesAction($entityId)
     {
         $notes = [
-            ['id' => 1, 'username' => 'AquaPelham', 'avatarUri' => '/images/leanna.jpeg', 'note' => 'Octopus asked me a riddle, outsmarted me', 'date' => 'Dec. 10, 2015'],
-            ['id' => 2, 'username' => 'AquaWeaver', 'avatarUri' => '/images/ryan.jpeg', 'note' => 'I counted 8 legs... as they wrapped around me', 'date' => 'Dec. 1, 2015'],
+            ['id' => 1, 'username' => 'AquaPelham', 'avatarUri' => '/images/leanna.jpeg', 'note' => 'Very interesting book', 'date' => 'Dec. 10, 2015'],
+            ['id' => 2, 'username' => 'AquaWeaver', 'avatarUri' => '/images/ryan.jpeg', 'note' => 'nice book', 'date' => 'Dec. 1, 2015'],
             ['id' => 3, 'username' => 'AquaPelham', 'avatarUri' => '/images/leanna.jpeg', 'note' => 'Inked!', 'date' => 'Aug. 20, 2015'],
         ];
 //        $em = $this->getDoctrine()->getManager();
@@ -154,4 +154,14 @@ class DefaultController extends Controller
 //        }
 //        return new JsonResponse($output);
 //    }
+
+    /**
+     * @Route("/", name="home")
+     * @param Request $request
+     * @return Response
+     */
+    public function homeAction(Request $request)
+    {
+        return $this->render('@App/home.html.twig');
+    }
 }

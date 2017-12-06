@@ -36,6 +36,10 @@ class BookType extends AbstractType
 
         $builder->add('release_year', DateType::class);
 
+        $builder->add(  'publisher', TextType::class);
+
+        $builder->add(  'genre', TextType::class);
+
         $builder->add(  'language', TextType::class);
 
         $builder->add('pages_number', NumberType::class);

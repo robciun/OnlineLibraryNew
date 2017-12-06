@@ -13,25 +13,39 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        <div class="search-bar">
-            <form method="GET" action="" class="js-sea-search sea-search">
-                <input type="search" name="q" placeholder="Search Books" autocomplete="off" class="search-input">
-            </form>
-        </div>
+        {% if app.session.flashBag.has('success') %}
+            <div class="alert alert-success">
+                {% for msg in app.session.flashBag.get('success') %}
+                    {{ msg }}
+                {% endfor %}
+            </div>
+        {% endif %}
+        {#<div class="search-bar">#}
+            {#<form method="GET" action="" class="js-sea-search sea-search">#}
+                {#<input type="search" name="q" placeholder="Search Books" autocomplete="off" class="search-input">#}
+            {#</form>#}
+        {#</div>#}
         <header class="header">
             <img class="logo-icon" src="{{ asset('images/lib.png') }}">
             <h1 class="logo">Online Library</h1>
             <ul class="navi">
                 <li>Welcome {{ app.user ? app.user.username : 'User' }}!</li>
-                <li class="search"><a href="#" class="js-header-search-toggle"><i class="fa fa-search"></i></a></li>
+                {#<li class="search"><a href="#" class="js-header-search-toggle"><i class="fa fa-search"></i></a></li>#}
                 {% if is_granted('ROLE_USER') %}
                     <li><a href="{{ path('user_logout') }}">Logout</a></li>
                 {% else %}
-                    <li><a href="{{ path('user_login') }}">Login</a></li>
                     <li><a href="{{ path('user_register') }}">Register</a></li>
+                    <li><a href="{{ path('user_login') }}">Login</a></li>
                 {% endif %}
             </ul>
         </header>
+
+        {#{{ knp_menu_render('AppBundle:Builder:mainMenu') }}#}
+
+        <div class="topnav" id="myTopnav">
+            <a class="active" href="{{ path('home') }}">Home</a>
+            <a href="{{ path('book_list') }}">Books List</a>
+        </div>
 
         <div class="main-content">
             {% block body %}{% endblock %}

@@ -335,5 +335,62 @@ class Book
     {
         return $this->last_read_page;
     }
-}
+    /**
+     * @var string
+     */
+    private $publisher;
 
+    /**
+     * @var string
+     */
+    private $genre;
+
+
+    /**
+     * Set publisher
+     *
+     * @param string $publisher
+     *
+     * @return Book
+     */
+    public function setPublisher($publisher)
+    {
+        $this->publisher = $publisher;
+
+        return $this;
+    }
+
+    /**
+     * Get publisher
+     *
+     * @return string
+     */
+    public function getPublisher()
+    {
+        return $this->publisher;
+    }
+
+    /**
+     * Set genre
+     *
+     * @param string $genre
+     *
+     * @return Book
+     */
+    public function setGenre($genre)
+    {
+        $this->genre = $genre;
+
+        return $this;
+    }
+
+    /**
+     * Get genre
+     *
+     * @return string
+     */
+    public function getGenre()
+    {
+        return $this->genre;
+    }
+}
