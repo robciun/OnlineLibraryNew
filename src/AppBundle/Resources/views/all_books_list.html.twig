@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Book list {% endblock %}
+
+{% block body %}
+    <h1 class="page-header text-center">
+        Books List
+    </h1>
+
+    {% set no = 1 %}
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered table-hover table-condensed dt">
+    <thead>
+    <tr>
+        <th>{{'Id'|trans({}, 'fields')}}</th>
+        <th>{{'Title'|trans({}, 'fields')}}</th>
+        <th>{{'Author'|trans({}, 'fields')}}</th>
+        <th>{{'Release year'|trans({}, 'fields')}}</th>
+        <th>{{'Publisher'|trans({}, 'fields')}}</th>
+        <th>{{'Genre'|trans({}, 'fields')}}</th>
+        <th>{{'Language'|trans({}, 'fields')}}</th>
+        <th>{{'Pages number'|trans({}, 'fields')}}</th>
+        <th>{{'Description'|trans({}, 'fields')}}</th>
+        <th>{{'Comments count'|trans({}, 'fields')}}</th>
+        <th>{{'Rating'|trans({}, 'fields')}}</th>
+        <th>{{'Readers count'|trans({}, 'fields')}}</th>
+        <th>{{'Last read page'|trans({}, 'fields')}}</th>
+        <th>
+        {% if is_granted('ROLE_USER') %}
+            <a href="{{ path('book_new') }}"
+               role="button" class="btn btn-xs btn-main">
+                <i class="glyphicon glyphicon-plus icon-white"></i></a>
+        {% endif %}
+        </th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for book in book_list %}
+        <tr>
+            <td>{{ no }}</td>
+            {% set no = no + 1 %}
+
+            <td><a href="{{ path('book_show', {'entityId': book.id}) }}">{{ book.title }}</a></td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.releaseYear|date("m/d/Y") }}</td>
+            <td>{{ book.publisher }}</td>
+            <td>{{ book.genre }}</td>
+            <td>{{ book.language }}</td>
+            <td>{{ book.pagesNumber }}</td>
+            <td>{{ book.description }}</td>
+            <td>{{ book.commentsCount }}</td>
+            <td>{{ book.rating }}</td>
+            <td>{{ book.readersCount }}</td>
+            <td>{{ book.lastReadPage }}</td>
+            <td>
+        {% if is_granted('ROLE_USER') %}
+                <div class="btn-toolbar nomargin">
+                    <div class="btn-group">
+                        <a data-toggle="modal-ajax"
+                           data-title="{{'Edit Book'|trans({}, 'default')}}"
+                           data-callback="reloadTab"
+                           data-target="#invModal"
+                           href="{{ path('book_edit', {'id': book.id}) }}"
+                           class="btn btn-default btn-xs"><i class="glyphicon glyphicon-pencil"></i></a>
+                        <a data-record="{{ book.id }}"
+                           data-msg="{{ book.title }}"
+                           href="{{ path('book_delete', {'entityId': book.id}) }}"
+                           data-callback="reloadTab"
+                           class="btn btn-default btn-xs delete"
+                            onclick="return confirm('Are you sure you want to delete this book?')"><i class="glyphicon glyphicon-remove"></i></a>
+                    </div>
+                </div>
+            {% endif %}
+            </td>
+
+        </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+{% endblock %}

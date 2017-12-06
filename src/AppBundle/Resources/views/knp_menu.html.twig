@@ -1,0 +1,14 @@
+{{ knp_menu_render('AppBundle:Builder:mainMenu') }}
+<ul>
+    <li class="current first">
+        <a href="{{ path('book_list') }}">Home</a>
+    </li>
+    <li class="current_ancestor">
+        <a href="{{ path('book_new') }}">About Me</a>
+        <ul class="menu_level_1">
+            <li class="current first last">
+                <a href="{{ path('user_login') }}">Edit profile</a>
+            </li>
+        </ul>
+    </li>
+</ul>

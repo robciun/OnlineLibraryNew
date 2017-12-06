@@ -1,0 +1,19 @@
+AppBundle\Entity\Note:
+    type: entity
+    repositoryClass: AppBundle\Entity\NoteRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        note:
+            type: string
+            lenght: 510
+    lifecycleCallbacks: {  }
+    manyToOne:
+        book:
+            targetEntity: AppBundle\Entity\Book
+            joinColumn:
+                name: book_id
+                referencedColumnName: id

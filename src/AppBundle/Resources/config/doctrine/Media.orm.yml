@@ -1,0 +1,14 @@
+AppBundle\Entity\Media:
+    type: entity
+    repositoryClass: AppBundle\Entity\MediaRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        file_name:
+            type: string
+            nullable: false
+            lenght: 510
+    lifecycleCallbacks: {  }

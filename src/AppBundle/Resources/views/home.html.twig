@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home {% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+
+    <div class="col-xs-3"><img class="home-icon" src="{{ asset('images/booksToPc.jpg') }}" alt="Pc book"></div>
+                <div class="col-xs-6">
+                    <h2 style="text-align: center">Welcome to Online Library!</h2>
+                    <p style="text-align: center">This is a website, where you can add or read books.</p>
+                    {#<img class="home-icon" src="{{ asset('images/galacticLib.jpg') }}" alt="Galactic book">#}
+                </div>
+            <div class="col-xs-3"><img class="home-icon" src="{{ asset('images/onlineLib.jpg') }}" alt="Pc book"></div>
+{% endblock %}
