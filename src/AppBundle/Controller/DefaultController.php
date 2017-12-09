@@ -164,4 +164,9 @@ class DefaultController extends Controller
     {
         return $this->render('@App/home.html.twig');
     }
+
+    public function getFile()
+    {
+
+    }
 }

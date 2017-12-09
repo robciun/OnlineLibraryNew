@@ -11,9 +11,11 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\User;
 use AppBundle\Form\Type\RegistrationType;
+use AppBundle\Form\Type\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
 {
@@ -50,5 +52,69 @@ class UserController extends Controller
         return $this->render('@App/register.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/userList", name="user_list")
+     * @param Request $request
+     * @return Response
+     */
+    public function bookList()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $usersList = $em->getRepository('AppBundle:User')->findAll();
+
+        return $this->render('@App/all_users_list.html.twig', [
+            'user_list' => $usersList,
+        ]);
+    }
+
+    /**
+     * @Route("/userEdit/{id}", name="user_edit")
+     * @param Request $request
+     * @param $id
+     * @return Response
+     */
+    public function editAction(Request $request, $id)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $user = $em->find(User::class, $id);
+
+        $form = $this->createForm(UserType::class, $user);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em->persist($user);
+            $em->flush();
+
+            return $this->redirectToRoute('user_list');
+        }
+
+        return $this->render('@App/user_edit.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/userDelete/{entityId}", name="user_delete")
+     * @param Request $request
+     * @param $entityId
+     * @return Response
+     */
+    public function deleteAction(Request $request, $entityId)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->find('AppBundle:User', $entityId);
+
+        if ($user) {
+            $em->remove($user);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('user_list');
     }
 }
