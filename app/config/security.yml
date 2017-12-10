@@ -28,6 +28,8 @@ security:
 
             form_login:
                 default_target_path: /home
+
+            switch_user: ~
             # activate different ways to authenticate
 
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
@@ -36,5 +38,8 @@ security:
             # https://symfony.com/doc/current/security/form_login_setup.html
             #form_login: ~
 
-#    access_control:
-#        - { path: ^/admin, roles: ROLE_ADMIN }
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }
+
+    role_hierarchy:
+            ROLE_ADMIN: [ROLE_ALLOWED_TO_SWITCH]

@@ -25,4 +25,8 @@ AppBundle\Entity\User:
         password:
             type: string
             length: 64
+        role:
+            type: string
+            length: 225
+            nullable: true
     lifecycleCallbacks: {  }

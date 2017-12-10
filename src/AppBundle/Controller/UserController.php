@@ -38,9 +38,17 @@ class UserController extends Controller
 //                ->add('success', 'Welcome to the Death Star, have a magical day!');
 //            $flash = $this->addFlash('success', 'Welcome '.$user->getUsername());
 
-            return $this->redirectToRoute('book_list', [
-                //'flash' => $flash
-            ]);
+            return $this->get('security.authentication.guard_handler')
+                ->authenticateUserAndHandleSuccess(
+                    $user,
+                    $request,
+                    $this->get('app.security.login_form_authenticator'),
+                    'main'
+                );
+
+//            return $this->redirectToRoute('home', [
+//                //'flash' => $flash
+//            ]);
 //            return $this->get('security.authentication.guard_handler')
 //                ->authenticateUserAndHandleSuccess(
 //                    $user,
@@ -59,7 +67,7 @@ class UserController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function bookList()
+    public function userList()
     {
         $em = $this->getDoctrine()->getManager();
         $usersList = $em->getRepository('AppBundle:User')->findAll();

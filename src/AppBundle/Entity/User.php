@@ -180,9 +180,13 @@ class User implements UserInterface
     {
         $roles = $this->roles;
 
-        if (!in_array('ROLE_USER', $roles)) {
+        //if (!in_array('ROLE_USER', $roles)) {
             $roles[] = 'ROLE_USER';
+        //}
+        if ($this->getRole() == 'ROLE_ADMIN') {
+            $roles[] = 'ROLE_ADMIN';
         }
+
         return $roles;
         //return ['ROLE_USER'];
     }
@@ -243,5 +247,34 @@ class User implements UserInterface
     public function getSurname()
     {
         return $this->surname;
+    }
+    /**
+     * @var string
+     */
+    private $role;
+
+
+    /**
+     * Set role
+     *
+     * @param string $role
+     *
+     * @return User
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return string
+     */
+    public function getRole()
+    {
+        return $this->role;
     }
 }
