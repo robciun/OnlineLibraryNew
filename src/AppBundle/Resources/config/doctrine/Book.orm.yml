@@ -44,4 +44,7 @@ AppBundle\Entity\Book:
         last_read_page:
             type: integer
             nullable: true
+        user_email:
+            type: string
+            nullable: true
     lifecycleCallbacks: {  }

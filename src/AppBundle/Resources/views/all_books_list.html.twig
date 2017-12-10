@@ -55,6 +55,7 @@
             <td>{{ book.lastReadPage }}</td>
             <td>
         {% if is_granted('ROLE_USER') %}
+            {% if book.userEmail == app.user.email or is_granted('ROLE_ADMIN') %}
                 <div class="btn-toolbar nomargin">
                     <div class="btn-group">
                         <a data-toggle="modal-ajax"
@@ -72,8 +73,8 @@
                     </div>
                 </div>
             {% endif %}
+            {% endif %}
             </td>
-
         </tr>
     {% endfor %}
     </tbody>

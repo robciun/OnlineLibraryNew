@@ -8,8 +8,11 @@
  */
 namespace AppBundle\Form\Type;
 
+use AppBundle\Entity\User;
 use Doctrine\ORM\EntityManager;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -45,6 +48,26 @@ class BookType extends AbstractType
         $builder->add('pages_number', NumberType::class);
 
         $builder->add('description', TextType::class);
+
+//        $user = $this->em->getRepository('AppBundle:User')->find('userId');
+//        $user->getEmail();
+
+//        $builder
+//            ->add('user', ChoiceType::class, array(
+//                'choices' => array('Email' => $user)));
+//        $builder->add('user', TextType::class);
+
+//        $user2 =
+//        $user = $this->em->getRepository('AppBundle:User')->
+        //$user = $this->get('se')
+
+//        $builder->add('user', EntityType::class, [
+//            'class' => 'AppBundle\Entity\User',
+//            'attr' => [
+//                'user' => 'labas',
+//            ],
+//        'placeholder' => '',
+//        ]);
 
 //        $builder->add('upload_book', FileType::class, array('label' => 'Book (PDF file)'));
 

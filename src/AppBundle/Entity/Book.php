@@ -393,4 +393,30 @@ class Book
     {
         return $this->genre;
     }
+    private $user_email;
+
+
+    /**
+     * Set userEmail
+     *
+     * @param string $userEmail
+     *
+     * @return Book
+     */
+    public function setUserEmail($userEmail)
+    {
+        $this->user_email = $userEmail;
+
+        return $this;
+    }
+
+    /**
+     * Get userEmail
+     *
+     * @return string
+     */
+    public function getUserEmail()
+    {
+        return $this->user_email;
+    }
 }

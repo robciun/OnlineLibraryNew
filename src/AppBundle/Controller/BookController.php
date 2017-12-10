@@ -9,6 +9,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Book;
+use AppBundle\Entity\User;
 use AppBundle\Form\Type\BookType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -62,6 +63,8 @@ class BookController extends Controller
 //            $file->move($this->getParameter('books_directory'));
 //
 //            $book->setUploadBook($fileName);
+
+            $book->setUserEmail($this->container->get('security.token_storage')->getToken()->getUser()->getEmail());
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($book);
@@ -121,6 +124,12 @@ class BookController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $book = $em->find('AppBundle:Book', $entityId);
+
+        if ($book->getUserEmail() != $this->getUser()->getEmail()) {
+            throw $this->createAccessDeniedException(
+                'You did not bake this delicious cookie!'
+            );
+        }
 
         if ($book) {
             $em->remove($book);
