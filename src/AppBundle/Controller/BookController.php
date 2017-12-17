@@ -11,6 +11,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Book;
 use AppBundle\Entity\User;
 use AppBundle\Form\Type\BookType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -52,6 +54,17 @@ class BookController extends Controller
 
         $form = $this->createForm(BookType::class, $book);
 
+//        $author = [$this->container->get('security.token_storage')->getToken()->getUser()->getName(), $this->container->get('security.token_storage')->getToken()->getUser()->getSurname()];
+////        $author = '';
+//
+//        $form = $this->createFormBuilder()
+//            ->add('author', ChoiceType::class, [
+//                'choices' => $author,
+//                'required' => false,
+//                'placeholder' => ''
+//            ])
+//            ->getForm();
+
         $form->handleRequest($request);
 
         if ($form->isValid() && $form->isSubmitted()) {
@@ -65,6 +78,7 @@ class BookController extends Controller
 //            $book->setUploadBook($fileName);
 
             $book->setUserEmail($this->container->get('security.token_storage')->getToken()->getUser()->getEmail());
+            $book->setAuthor($this->container->get('security.token_storage')->getToken()->getUser()->getName());
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($book);

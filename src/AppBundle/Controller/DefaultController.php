@@ -2,15 +2,21 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Book;
 use AppBundle\Entity\Media;
 use AppBundle\Entity\Note;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Finder\Finder;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Symfony\Component\VarDumper\VarDumper;
 
 class DefaultController extends Controller
 {
@@ -69,8 +75,38 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $bookList = $em->getRepository('AppBundle:Book')->findAll();
 
+        $form = $this->createFormBuilder()
+            ->add('search', TextType::class)
+            ->getForm();
+
         return $this->render('@App/all_books_list.html.twig', [
             'book_list' => $bookList,
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/search/{id}", name="handleSearch")
+     * @param Request $request
+     * @param $id
+     * @return Response
+     */
+    public function handleSearch (Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $book = $em->find(Book::class, $id);
+
+
+        $em->persist($book);
+        $em->flush();
+
+            //return $this->redirectToRoute('book_list');
+
+//        var_dump($request->request);
+//        die();
+        return $this->render('base.html.twig', [
+            'book' => $book
         ]);
     }
 
@@ -165,8 +201,53 @@ class DefaultController extends Controller
         return $this->render('@App/home.html.twig');
     }
 
-    public function getFile()
+    /**
+     * @Route("/fileList", name="files_list")
+     * @param Request $request
+     * @return Response
+     */
+    public function findFile()
     {
+        $em = $this->getDoctrine()->getManager();
+        $filesList = $em->getRepository('AppBundle:Media')->getValuesList();
+//        VarDumper::dump($filesList);
+        $finder = new Finder();
+        $fileContent = $finder->files()->in('C:\xampp\htdocs\symfonyNew\web\uploads')/*->name('ef7d9937179949d98b83eb9729a10f4f.pdf')*/;
+//        $fileContent = $finder->files()->in('C:\xampp\htdocs\symfonyNew\web\uploads');
+        $getFiles = [$filesList];
 
+//        $response = new Response($fileContent);
+//////
+//        $disposition = $response->headers->makeDisposition(
+//            ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+//            'ef7d9937179949d98b83eb9729a10f4f.pdf'
+//        );
+//
+//        $response->headers->set('Content-Disposition', $disposition);
+//
+//        return $response->headers->set('Content-Disposition', $disposition);
+//        $file = 'C:\xampp\htdocs\symfonyNew\web\uploads\3cc9e7cdf77bd3b5f94f699a87a86d42.png';
+//        $response = new BinaryFileResponse($file);
+        //$contents = $finder->getContents();
+
+//        foreach ($finder as $file) {
+//            $contents = $file->getContents();
+//        }
+
+//        return $this->render('@App/files_list.html.twig', [
+//            'files_list' => $filesList,
+//        ]);
+//        foreach ($filesList as $file) {
+////            return new BinaryFileResponse('C:\xampp\htdocs\symfonyNew\web\uploads'  .$file);
+//            return new Response($file);
+//        }
+        return new BinaryFileResponse('C:\xampp\htdocs\symfonyNew\web\uploads\ef7d9937179949d98b83eb9729a10f4f.pdf');
+//        $filesList = ['ef7d9937179949d98b83eb9729a10f4f.pdf', '45f7949c9774a608e73ab10a67cdccb7.png'];
+//        $id = 0;
+//        return new BinaryFileResponse('C:\xampp\htdocs\symfonyNew\web\uploads' . DIRECTORY_SEPARATOR  . $filesList[0]);
+//        return $this->render('@App/home.html.twig');
+//        return new Response('1');
     }
+
+
 }

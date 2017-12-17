@@ -9,6 +9,7 @@
             <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
             <link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/font-awesome.min.css') }}">
             <link rel="stylesheet" href="{{ asset('assets/vendor/dropzone/dist/min/dropzone.min.css') }}">
+            {#<link rel="stylesheet" href="{{ asset('https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css')}}">#}
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
@@ -40,12 +41,21 @@
             </ul>
         </header>
 
+        {#{{ form_start(form, {#}
+            {#'attr': {'class': 'navbar-form navbar-right', 'action': path('handleSearch', {'id': '1'})}#}
+        {#}) }}#}
+
+        {#{{ form_widget(form.search, {#}
+            {#'attr': {'class': 'form-control search-query'}#}
+        {#}) }}#}
+
         {#{{ knp_menu_render('AppBundle:Builder:mainMenu') }}#}
 
         <div class="topnav" id="myTopnav">
             <a class="active" href="{{ path('home') }}">Home</a>
             <a href="{{ path('book_list') }}">Books List</a>
             <a href="{{ path('user_list') }}">Users List</a>
+            <a href="{{ path('files_list') }}">Files List</a>
         </div>
 
         <div class="main-content">
@@ -60,6 +70,7 @@
             <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
             <script src="{{ asset('js/main.js') }}"></script>
             <script src="{{ asset('assets/vendor/dropzone/dist/min/dropzone.min.js') }}"></script>
+            {#<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>#}
         {% endblock %}
     </body>
 </html>

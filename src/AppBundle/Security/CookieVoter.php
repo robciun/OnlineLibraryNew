@@ -28,6 +28,16 @@ class CookieVoter extends Voter
         $this->decisionManager = $decisionManager;
     }
 
+    protected function getSupportedClasses()
+    {
+        return array('AppBundle\Entity\DeliciousCookie');
+    }
+
+    protected function getSupportedAttributes()
+    {
+        return array('DEDIT');
+    }
+
     protected function supports($attribute, $subject)
     {
         if (!in_array($attribute, array(self::VIEW, self::EDIT))) {

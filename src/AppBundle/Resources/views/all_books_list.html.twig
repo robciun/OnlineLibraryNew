@@ -1,5 +1,13 @@
 {% extends 'base.html.twig' %}
 
+{#{% block stylesheets %}#}
+    {#<link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">#}
+    {#<link rel="stylesheet" href="{{ asset('css/styles.css') }}">#}
+    {#<link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/font-awesome.min.css') }}">#}
+    {#<link rel="stylesheet" href="{{ asset('assets/vendor/dropzone/dist/min/dropzone.min.css') }}">#}
+    {#<link rel="stylesheet" href="{{ asset('https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css')}}">#}
+{#{% endblock %}#}
+
 {% block title %}Book list {% endblock %}
 
 {% block body %}
@@ -9,6 +17,57 @@
 
     {% set no = 1 %}
 
+        {#<form>#}
+            {#<input name="q" type="search">#}
+            {#<input type="submit" value="Find">#}
+        {#</form>#}
+
+    {#{% for books in book %}#}
+    {#{% block stylesheets %}#}
+        {#<link href="{{ asset(asset('https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css')) }}" type="text/css" rel="stylesheet" />#}
+    {#<div data-role="main" class="ui-content">#}
+    {#<div data-role="collapsible">#}
+    {#<h1>Expand filter</h1>#}
+    {#<div class="container">#}
+    {#<div class="row">#}
+    {#<form>#}
+        {#Title:<br>#}
+        {#<input name="t" type="Title">#}
+        {#<br>#}
+        {#Author:<br>#}
+        {#<input name="a" type="Author">#}
+        {#<br>#}
+        {#Release year:<br>#}
+        {#<input name="r" type="Release year">#}
+        {#<br>#}
+        {#Publisher:<br>#}
+        {#<input name="p" type="Publisher">#}
+        {#<br>#}
+        {#Genre:<br>#}
+        {#<input name="g" type="Genre">#}
+        {#<br>#}
+        {#Language:<br>#}
+        {#<input name="l" type="Language">#}
+        {#<br>#}
+        {#Pages number:<br>#}
+        {#<input name="pn" type="Pages number">#}
+        {#<input type="submit" value="Filter">#}
+        {#<br>#}
+    {#</form>#}
+    {#</div>#}
+    {#</div>#}
+    {#</div>#}
+    {#</div>#}
+        {#{% endblock %}#}
+    {#{{ form_start(form, {#}
+        {#'attr': {'class': 'navbar-form navbar-right', 'action': path('handleSearch')}#}
+    {#}) }}#}
+
+    {#{{ form_widget(form.search, {#}
+        {#'attr': {'class': 'form-control search-query'}#}
+    {#}) }}#}
+        {#{% endfor %}#}
+    {#{{ form_label(book_list.name, 'Your name') }}#}
 <table width="100%" cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered table-hover table-condensed dt">
     <thead>
     <tr>
@@ -81,3 +140,7 @@
 
 </table>
 {% endblock %}
+{#{% block javascripts %}#}
+    {#<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>#}
+    {#<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js">#}
+{#{% endblock %}#}

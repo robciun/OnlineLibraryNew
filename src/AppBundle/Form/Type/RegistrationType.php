@@ -12,6 +12,7 @@ namespace AppBundle\Form\Type;
 use AppBundle\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -26,7 +27,7 @@ class RegistrationType extends AbstractType
             ->add('email', EmailType::class)
             ->add('username', TextType::class)
             ->add('name', TextType::class)
-            ->add('surname', TextType::class)
+            ->add('surname', HiddenType::class)
             ->add('plainPassword', RepeatedType::class, array(
                 'type' => PasswordType::class,
                 'first_options'  => array('label' => 'Password'),

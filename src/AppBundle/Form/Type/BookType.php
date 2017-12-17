@@ -17,6 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -35,7 +36,7 @@ class BookType extends AbstractType
 
         $builder->add('title', TextType::class);
 
-        $builder->add('author', TextType::class);
+//        $builder->add('author', TextType::class);
 
         $builder->add('release_year', DateType::class);
 
@@ -47,7 +48,12 @@ class BookType extends AbstractType
 
         $builder->add('pages_number', NumberType::class);
 
-        $builder->add('description', TextType::class);
+        $builder->add('description', TextareaType::class);
+
+//        $builder->add('name', null, array(
+//            'required'   => false,
+//            'empty_data' => 'John Doe',
+//        ));
 
 //        $user = $this->em->getRepository('AppBundle:User')->find('userId');
 //        $user->getEmail();

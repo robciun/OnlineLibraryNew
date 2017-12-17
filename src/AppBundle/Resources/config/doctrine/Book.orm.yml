@@ -20,6 +20,7 @@ AppBundle\Entity\Book:
         publisher:
             type: string
             length: 255
+            nullable: true
         genre:
             type: string
             length: 255
