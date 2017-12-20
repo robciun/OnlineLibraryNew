@@ -74,6 +74,7 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $bookList = $em->getRepository('AppBundle:Book')->findAll();
+        $book = $em->getRepository('AppBundle:Book')->sortBooksByTitleAsc();
 
         $form = $this->createFormBuilder()
             ->add('search', TextType::class)
@@ -81,6 +82,7 @@ class DefaultController extends Controller
 
         return $this->render('@App/all_books_list.html.twig', [
             'book_list' => $bookList,
+            'bookAsc' => $book,
             'form' => $form->createView()
         ]);
     }
@@ -241,7 +243,7 @@ class DefaultController extends Controller
 ////            return new BinaryFileResponse('C:\xampp\htdocs\symfonyNew\web\uploads'  .$file);
 //            return new Response($file);
 //        }
-        return new BinaryFileResponse('C:\xampp\htdocs\symfonyNew\web\uploads\ef7d9937179949d98b83eb9729a10f4f.pdf');
+        return new BinaryFileResponse('C:\xampp\htdocs\symfonyNew\web\uploads\08d9a86a7032960f71fc11b8d7bdf073.pdf');
 //        $filesList = ['ef7d9937179949d98b83eb9729a10f4f.pdf', '45f7949c9774a608e73ab10a67cdccb7.png'];
 //        $id = 0;
 //        return new BinaryFileResponse('C:\xampp\htdocs\symfonyNew\web\uploads' . DIRECTORY_SEPARATOR  . $filesList[0]);

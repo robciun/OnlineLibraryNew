@@ -100,7 +100,8 @@
             <td>{{ no }}</td>
             {% set no = no + 1 %}
 
-            <td><a href="{{ path('book_show', {'entityId': book.id}) }}">{{ book.title }}</a></td>
+            {#<td><a href="{{ path('book_show', {'entityId': book.id}) }}">{{ book.title }}</a></td>#}
+            <td><a href="{{ path('files_list') }}">{{ book.title }}</a></td>
             <td>{{ book.author }}</td>
             <td>{{ book.releaseYear|date("m/d/Y") }}</td>
             <td>{{ book.publisher }}</td>

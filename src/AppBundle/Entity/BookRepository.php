@@ -20,4 +20,24 @@ class BookRepository extends EntityRepository
             ->orderBy('b.id', 'asc')
             ->getQuery()->getArrayResult();
     }
+
+    public function sortBooksByTitleAsc()
+    {
+        $qb = $this->createQueryBuilder('b');
+
+        $qb->select('b')
+            ->orderBy('b.title', 'ASC');
+    }
+
+    public function sortBooksByTitleDesc()
+    {
+        $qb = $this->createQueryBuilder('b');
+
+        $qb->select('b')
+            ->orderBy('b.title', 'DESC');
+
+        $items = $qb->getQuery()->getArrayResult();
+
+        return $items;
+    }
 }

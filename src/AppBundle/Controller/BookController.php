@@ -139,9 +139,9 @@ class BookController extends Controller
         $em = $this->getDoctrine()->getManager();
         $book = $em->find('AppBundle:Book', $entityId);
 
-        if ($book->getUserEmail() != $this->getUser()->getEmail()) {
+        if ($book->getUserEmail() != $this->getUser()->getEmail() && $this->getUser()->getRole() != 'ROLE_ADMIN') {
             throw $this->createAccessDeniedException(
-                'You did not bake this delicious cookie!'
+                'It is not your book!'
             );
         }
 
@@ -151,5 +151,20 @@ class BookController extends Controller
         }
 
         return $this->redirectToRoute('book_list');
+    }
+
+    /**
+     * @Route("/sort", name="books_sort")
+     * @param Request $request
+     * @return Response
+     */
+    public function sortBooks()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $book = $em->getRepository('AppBundle:Book')->sortBooksByTitleAsc();
+
+        return $this->render('base.html.twig',[
+           'booksAsc' => $book
+        ]);
     }
 }
