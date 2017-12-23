@@ -15,10 +15,26 @@
                         {{ form_row(form.plainPassword.second, {
                             'label': 'Repeat Password'
                         }) }}
+                {#{% block form_label %}#}
+                    {#{% spaceless %}#}
+                        {#<label><a href=""</label>#}
+
+                {#{{ form_row(form.terms, {#}
+                    {#'label' : "I accept copyright" <a href="{{ path('terms') }}">"terms and conditions"</a>#}
+                {#}) }}#}
+                <span style="display:inline-block">
+                    {{ form_row(form.terms) }}
+                </span>
+                <span style="display:inline-block">
+                    <a href="{{ path('terms') }}">terms and conditions</a>
+                </span>
+                <br>
                 {#formnovalidate#}
-                        <button type="submit" class="btn btn-primary">Register</button>
+                <button type="submit" class="btn btn-primary">Register</button>
+                {{ form_end(form) }}
+
                     {#{{ flash }}#}
-                    {{ form_end(form) }}
+
             </div>
         </div>
     </div>

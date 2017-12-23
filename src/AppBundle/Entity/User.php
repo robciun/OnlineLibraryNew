@@ -277,4 +277,33 @@ class User implements UserInterface
     {
         return $this->role;
     }
+    /**
+     * @var string
+     */
+    private $terms;
+
+
+    /**
+     * Set terms
+     *
+     * @param string $terms
+     *
+     * @return User
+     */
+    public function setTerms($terms)
+    {
+        $this->terms = $terms;
+
+        return $this;
+    }
+
+    /**
+     * Get terms
+     *
+     * @return string
+     */
+    public function getTerms()
+    {
+        return $this->terms;
+    }
 }

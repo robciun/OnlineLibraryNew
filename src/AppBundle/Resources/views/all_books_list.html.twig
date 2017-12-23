@@ -82,8 +82,8 @@
         <th>{{'Description'|trans({}, 'fields')}}</th>
         <th>{{'Comments count'|trans({}, 'fields')}}</th>
         <th>{{'Rating'|trans({}, 'fields')}}</th>
-        <th>{{'Readers count'|trans({}, 'fields')}}</th>
-        <th>{{'Last read page'|trans({}, 'fields')}}</th>
+        {#<th>{{'Readers count'|trans({}, 'fields')}}</th>#}
+        {#<th>{{'Last read page'|trans({}, 'fields')}}</th>#}
         <th>
         {% if is_granted('ROLE_USER') %}
             <a href="{{ path('book_new') }}"
@@ -111,8 +111,8 @@
             <td>{{ book.description }}</td>
             <td>{{ book.commentsCount }}</td>
             <td>{{ book.rating }}</td>
-            <td>{{ book.readersCount }}</td>
-            <td>{{ book.lastReadPage }}</td>
+            {#<td>{{ book.readersCount }}</td>#}
+            {#<td>{{ book.lastReadPage }}</td>#}
             <td>
         {% if is_granted('ROLE_USER') %}
             {% if book.userEmail == app.user.email or is_granted('ROLE_ADMIN') %}

@@ -251,5 +251,15 @@ class DefaultController extends Controller
 //        return new Response('1');
     }
 
+    /**
+     * @Route("/terms", name="terms")
+     * @param Request $request
+     * @return Response
+     */
+    public function getTerms()
+    {
+        return $this->render('@App/terms.html.twig');
+    }
+
 
 }

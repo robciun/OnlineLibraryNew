@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f9d72f0-cb6c-4fcf-b0b8-54b4cfa8f827" name="Default" comment="Added additional fields to Book and User and enabled pdf upload">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/BookController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/BookController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/BookRepository.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/BookRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/User.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/User.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Form/Type/RegistrationType.php" afterPath="$PROJECT_DIR$/src/AppBundle/Form/Type/RegistrationType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/User.orm.yml" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/User.orm.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/views/all_books_list.html.twig" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/views/all_books_list.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/views/register.html.twig" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/views/register.html.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -55,12 +58,14 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="all_books_list.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="all_books_list.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/all_books_list.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="99" column="29" lean-forward="true" selection-start-line="99" selection-start-column="29" selection-end-line="99" selection-end-column="29" />
-              <folding />
+            <state relative-caret-position="17">
+              <caret line="84" column="8" lean-forward="false" selection-start-line="84" selection-start-column="10" selection-end-line="85" selection-end-column="59" />
+              <folding>
+                <marker date="1513840451239" expanded="true" signature="4202:4283" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -68,8 +73,56 @@
       <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="67" column="42" lean-forward="true" selection-start-line="67" selection-start-column="42" selection-end-line="67" selection-end-column="42" />
+            <state relative-caret-position="424">
+              <caret line="81" column="7" lean-forward="true" selection-start-line="81" selection-start-column="7" selection-end-line="81" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/register.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="28" column="70" lean-forward="false" selection-start-line="28" selection-start-column="70" selection-end-line="28" selection-end-column="70" />
+              <folding>
+                <element signature="e#1060#1088#0#HTML" expanded="true" />
+                <element signature="e#1183#1211#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="librarydatabase.user" pinned="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/2d795afd/1b6394b6-ff9d-489c-b51c-aeb8634233c8/librarydatabase.user">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.orm.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/User.orm.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="33" column="25" lean-forward="false" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RegistrationType.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/Type/RegistrationType.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="243">
+              <caret line="37" column="42" lean-forward="false" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -78,27 +131,12 @@
       <file leaf-file-name="BookController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/BookController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
+            <state relative-caret-position="2533">
               <caret line="166" column="20" lean-forward="false" selection-start-line="166" selection-start-column="12" selection-end-line="166" selection-end-column="20" />
               <folding>
-                <element signature="e#4882#4898#1#PHP" expanded="true" />
-                <element signature="e#4954#4970#0#PHP" expanded="true" />
+                <element signature="e#7#92#0#PHP" expanded="false" />
+                <element signature="e#126#152#0#PHP" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="librarydatabase.user" pinned="false" current-in-tab="false">
-        <entry file="dbDummy://dbtable:/2d795afd/1b6394b6-ff9d-489c-b51c-aeb8634233c8/librarydatabase.user">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -106,53 +144,32 @@
       <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2">
-              <caret line="82" column="30" lean-forward="true" selection-start-line="82" selection-start-column="30" selection-end-line="82" selection-end-column="30" />
+            <state relative-caret-position="274">
+              <caret line="260" column="50" lean-forward="false" selection-start-line="260" selection-start-column="50" selection-end-line="260" selection-end-column="50" />
               <folding>
-                <element signature="e#2799#2815#1#PHP" expanded="true" />
+                <element signature="e#2985#3016#0#PHP" expanded="true" />
+                <element signature="e#9227#9249#1#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BookRepository.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/BookRepository.php">
+      <file leaf-file-name="terms.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/terms.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="21" lean-forward="true" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/home.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
-              <caret line="40" column="22" lean-forward="false" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
+              <caret line="16" column="14" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="16" selection-end-column="14" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MediaRepository.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/MediaRepository.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="59">
-              <caret line="23" column="51" lean-forward="false" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="new.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/new.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-646">
-              <caret line="13" column="34" lean-forward="false" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="all_users_list.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/all_users_list.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="952">
-              <caret line="56" column="31" lean-forward="false" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="31" />
-              <folding>
-                <marker date="1513544205234" expanded="false" signature="837:846" ph="/show/{entityId}" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -170,7 +187,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>'u'</find>
       <find>'us'</find>
       <find>'use'</find>
       <find>'user'</find>
@@ -200,6 +216,7 @@
       <find>html</find>
       <find>You did not bake this delicious cookie!</find>
       <find>book_list</find>
+      <find>The link must be provided by inserting the DOI number of the published article in the following sentence: “The final publication is available at IOS Press through http://dx.doi.org/[insert DOI]” (for example “The final publication is available at IOS Press through http://dx.doi.org/10.3233/JAD-151075</find>
     </findStrings>
     <replaceStrings>
       <replace>book</replace>
@@ -214,11 +231,6 @@
   </component>
   <component name="FrameworkCommandLineHistory">
     <commandsHistory>
-      <command text="s cache:clear --env=prod" />
-      <command text="s cache:clear" />
-      <command text="s doctrine:cache:clear-metadata" />
-      <command text="s doctrine:schema:update --force" />
-      <command text="s composer require symfony/finder" />
       <command text="s doctrine:generate:entities AppBundle:User --no-backup" />
       <command text="s doctrine:schema:update --force" />
       <command text="s doctrine:generate:entities AppBundle:User --no-backup" />
@@ -239,6 +251,11 @@
       <command text="s cache:clear --env=prod" />
       <command text="s cache:clear --env=dev" />
       <command text="s cache:clear --env=prod" />
+      <command text="s doctrine:schema:update --force" />
+      <command text="s doctrine:generate:entities AppBundle:User --no-backup" />
+      <command text="s doctrine:schema:update --force" />
+      <command text="s doctrine:generate:entities AppBundle:User --no-backup" />
+      <command text="s doctrine:schema:update --force" />
     </commandsHistory>
   </component>
   <component name="Git.Settings">
@@ -250,7 +267,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/NotifiableNotificationRepository.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/UserOld.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Repository/NoteRepository.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Repository/NotifiableNotificationRepository.php" />
@@ -276,7 +292,6 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/login.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Security/LoginFormAuthenticator.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/home.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/register.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/Type/UserType.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/user_edit.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/User.php" />
@@ -288,19 +303,21 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Security/CookieVoter.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/files_list.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/MediaRepository.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/User.orm.yml" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Form/Type/RegistrationType.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Book.orm.yml" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/new.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/Type/BookType.php" />
         <option value="$PROJECT_DIR$/web/vendor/bootstrap/css/bootstrap.min.css" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/all_users_list.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/BookRepository.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/BookController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/books_sort.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/all_books_list.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/User.orm.yml" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/register.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Form/Type/RegistrationType.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/terms.html.twig" />
       </list>
     </option>
   </component>
@@ -739,7 +756,7 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="last_opened_file_path" value="D:/Programs/Baigiamasis/usefullFiles" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
-    <property name="SearchEverywhereHistoryKey" value="bookrepo&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Entity/BookRepository.php&#10;user&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Resources/views/all_users_list.html.twig&#10;regis&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Resources/views/register.html.twig&#10;login&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Resources/views/login.html.twig&#10;all&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Resources/views/all_books_list.html.twig&#10;defaul&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Controller/DefaultController.php&#10;user.php&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Entity/User.php&#10;book.php&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Entity/Book.php&#10;book&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Resources/config/doctrine/Book.orm.yml&#10;booktype&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Form/Type/BookType.php&#10;new&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Resources/views/new.html.twig&#10;register&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Resources/views/register.html.twig&#10;bookorm&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Resources/config/doctrine/Book.orm.yml&#10;userorm&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Resources/config/doctrine/User.orm.yml&#10;booktyp&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Form/Type/BookType.php&#10;mediarepo&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Entity/MediaRepository.php&#10;bookcontro&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Controller/BookController.php&#10;registraty&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Form/Type/RegistrationType.php&#10;user.orm&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Resources/config/doctrine/User.orm.yml&#10;рфыр&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Doctrine/HashPasswordListener.php&#10;bookcontrol&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Controller/BookController.php&#10;usertype&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Form/Type/UserType.php&#10;bookty&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Form/Type/BookType.php&#10;ищщлсщтекщддук&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Controller/BookController.php&#10;bookco&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Controller/BookController.php&#10;logintype&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Form/Type/LoginType.php&#10;noteorm&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Resources/config/doctrine/Note.orm.yml&#10;doctrinemigra&#9;null&#9;null&#10;book.yml&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Resources/config/lists/book.yml&#10;reposi&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Entity/BookRepository.php&#10;orm&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Resources/config/doctrine/Book.orm.yml&#10;index.html&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/app/Resources/views/default/index.html.twig&#10;UserInterface&#9;null&#9;null&#10;mappingex&#9;null&#9;null&#10;controller&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="all&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Resources/views/all_books_list.html.twig&#10;userorm&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Resources/config/doctrine/User.orm.yml&#10;registty&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Form/Type/RegistrationType.php&#10;bookrepo&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Entity/BookRepository.php&#10;user&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Resources/views/all_users_list.html.twig&#10;regis&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Resources/views/register.html.twig&#10;login&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Resources/views/login.html.twig&#10;defaul&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Controller/DefaultController.php&#10;user.php&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Entity/User.php&#10;book.php&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Entity/Book.php&#10;book&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Resources/config/doctrine/Book.orm.yml&#10;booktype&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Form/Type/BookType.php&#10;new&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Resources/views/new.html.twig&#10;register&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Resources/views/register.html.twig&#10;bookorm&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Resources/config/doctrine/Book.orm.yml&#10;booktyp&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Form/Type/BookType.php&#10;mediarepo&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Entity/MediaRepository.php&#10;bookcontro&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Controller/BookController.php&#10;registraty&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Form/Type/RegistrationType.php&#10;user.orm&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Resources/config/doctrine/User.orm.yml&#10;рфыр&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Doctrine/HashPasswordListener.php&#10;bookcontrol&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Controller/BookController.php&#10;usertype&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Form/Type/UserType.php&#10;bookty&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Form/Type/BookType.php&#10;ищщлсщтекщддук&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Controller/BookController.php&#10;bookco&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Controller/BookController.php&#10;logintype&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Form/Type/LoginType.php&#10;noteorm&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Resources/config/doctrine/Note.orm.yml&#10;doctrinemigra&#9;null&#9;null&#10;book.yml&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Resources/config/lists/book.yml&#10;reposi&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Entity/BookRepository.php&#10;orm&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/src/AppBundle/Resources/config/doctrine/Book.orm.yml&#10;index.html&#9;FILE&#9;file://C:/xampp/htdocs/symfonyNew/app/Resources/views/default/index.html.twig&#10;UserInterface&#9;null&#9;null&#10;mappingex&#9;null&#9;null&#10;controller&#9;null&#9;null" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
   </component>
   <component name="RecentsManager">
@@ -866,6 +883,8 @@
       <workItem from="1513530393289" duration="4694000" />
       <workItem from="1513538609940" duration="5320000" />
       <workItem from="1513801623664" duration="3268000" />
+      <workItem from="1513839624472" duration="1100000" />
+      <workItem from="1514037706638" duration="3739000" />
     </task>
     <task id="LOCAL-00001" summary="Added notes visualisation, book list with CRUD">
       <created>1511958395768</created>
@@ -899,16 +918,15 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="208237000" />
+    <option name="totallyTimeSpent" value="213076000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3472012" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35779122" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36006546" sideWeight="0.5060514" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18532526" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35679215" sideWeight="0.49394855" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -923,6 +941,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -944,13 +963,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/routing_dev.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -976,19 +988,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="23" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/2d795afd/1b6394b6-ff9d-489c-b51c-aeb8634233c8/librarydatabase.note">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -996,10 +1007,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding>
-            <element signature="e#6#93#0#PHP" expanded="false" />
-            <element signature="e#129#155#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1007,7 +1014,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="18" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1015,7 +1021,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1037,17 +1042,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="23" column="27" lean-forward="false" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
-          <folding>
-            <element signature="e#7#92#0#PHP" expanded="false" />
-            <element signature="e#126#152#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/home.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="14" lean-forward="false" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -1076,10 +1070,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="24" column="42" lean-forward="false" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
-          <folding>
-            <element signature="e#7#93#0#PHP" expanded="false" />
-            <element signature="e#126#166#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1101,7 +1091,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="66" column="5" lean-forward="true" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1109,7 +1098,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
           <caret line="110" column="25" lean-forward="false" selection-start-line="110" selection-start-column="25" selection-end-line="110" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1117,9 +1105,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-69">
           <caret line="45" column="26" lean-forward="true" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
-          <folding>
-            <element signature="e#3018#3044#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1142,9 +1127,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="35" column="47" lean-forward="false" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
-          <folding>
-            <element signature="e#126#152#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1152,34 +1134,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="36" lean-forward="false" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/2d795afd/1b6394b6-ff9d-489c-b51c-aeb8634233c8/librarydatabase.media">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/Type/RegistrationType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="29" column="39" lean-forward="false" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/User.orm.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="18" column="26" lean-forward="true" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -1187,7 +1153,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" column="26" lean-forward="false" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1195,9 +1160,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3060">
           <caret line="183" column="35" lean-forward="false" selection-start-line="183" selection-start-column="35" selection-end-line="183" selection-end-column="35" />
-          <folding>
-            <element signature="e#36#91#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1215,19 +1177,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
           <caret line="50" column="49" lean-forward="false" selection-start-line="50" selection-start-column="49" selection-end-line="50" selection-end-column="49" />
-          <folding>
-            <element signature="e#7#92#0#PHP" expanded="false" />
-            <element signature="e#125#151#0#PHP" expanded="false" />
-            <marker date="1513533132328" expanded="true" signature="2124:2190" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/register.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="50" lean-forward="false" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1249,7 +1198,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="35" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="6" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1261,15 +1209,14 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/2d795afd/1b6394b6-ff9d-489c-b51c-aeb8634233c8/librarydatabase.book">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -1283,22 +1230,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/2d795afd/1b6394b6-ff9d-489c-b51c-aeb8634233c8/librarydatabase.user">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/new.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-646">
+        <state relative-caret-position="221">
           <caret line="13" column="34" lean-forward="false" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
           <folding />
         </state>
@@ -1308,13 +1242,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/MediaRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
+        <state relative-caret-position="391">
           <caret line="23" column="51" lean-forward="false" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="51" />
           <folding />
         </state>
@@ -1322,53 +1255,105 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/BookRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
+        <state relative-caret-position="680">
           <caret line="40" column="22" lean-forward="false" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2">
-          <caret line="82" column="30" lean-forward="true" selection-start-line="82" selection-start-column="30" selection-end-line="82" selection-end-column="30" />
-          <folding>
-            <element signature="e#2799#2815#1#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/books_sort.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/books_sort.html.twig" />
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/BookController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
+        <state relative-caret-position="2533">
           <caret line="166" column="20" lean-forward="false" selection-start-line="166" selection-start-column="12" selection-end-line="166" selection-end-column="20" />
           <folding>
-            <element signature="e#4882#4898#1#PHP" expanded="true" />
-            <element signature="e#4954#4970#0#PHP" expanded="true" />
+            <element signature="e#7#92#0#PHP" expanded="false" />
+            <element signature="e#126#152#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="81" column="7" lean-forward="true" selection-start-line="81" selection-start-column="7" selection-end-line="81" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/User.orm.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="33" column="25" lean-forward="false" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2d795afd/1b6394b6-ff9d-489c-b51c-aeb8634233c8/librarydatabase.user">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/home.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="67" column="42" lean-forward="true" selection-start-line="67" selection-start-column="42" selection-end-line="67" selection-end-column="42" />
+          <caret line="16" column="14" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="16" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/all_books_list.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="99" column="29" lean-forward="true" selection-start-line="99" selection-start-column="29" selection-end-line="99" selection-end-column="29" />
+        <state relative-caret-position="17">
+          <caret line="84" column="8" lean-forward="false" selection-start-line="84" selection-start-column="10" selection-end-line="85" selection-end-column="59" />
+          <folding>
+            <marker date="1513840451239" expanded="true" signature="4202:4283" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="260" column="50" lean-forward="false" selection-start-line="260" selection-start-column="50" selection-end-line="260" selection-end-column="50" />
+          <folding>
+            <element signature="e#2985#3016#0#PHP" expanded="true" />
+            <element signature="e#9227#9249#1#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/register.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="28" column="70" lean-forward="false" selection-start-line="28" selection-start-column="70" selection-end-line="28" selection-end-column="70" />
+          <folding>
+            <element signature="e#1060#1088#0#HTML" expanded="true" />
+            <element signature="e#1183#1211#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/Type/RegistrationType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="37" column="42" lean-forward="false" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/terms.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="21" lean-forward="true" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
           <folding />
         </state>
       </provider>
