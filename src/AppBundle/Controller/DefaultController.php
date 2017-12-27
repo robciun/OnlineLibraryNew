@@ -70,11 +70,15 @@ class DefaultController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function bookList()
+    public function bookList(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $bookList = $em->getRepository('AppBundle:Book')->findAll();
         $book = $em->getRepository('AppBundle:Book')->sortBooksByTitleAsc();
+
+        $filter = $request->query->get('filter');
+
+        $qb = $em->getRepository('AppBundle:Book')->findAllQueryBuilder($filter);
 
         $form = $this->createFormBuilder()
             ->add('search', TextType::class)
@@ -83,7 +87,8 @@ class DefaultController extends Controller
         return $this->render('@App/all_books_list.html.twig', [
             'book_list' => $bookList,
             'bookAsc' => $book,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'filter' => $qb
         ]);
     }
 
@@ -260,6 +265,5 @@ class DefaultController extends Controller
     {
         return $this->render('@App/terms.html.twig');
     }
-
 
 }

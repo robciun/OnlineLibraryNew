@@ -32,4 +32,7 @@ AppBundle\Entity\User:
             nullable: true
         terms:
             type: boolean
+        date_registered:
+            type: datetime
+            nullable: true
     lifecycleCallbacks: {  }

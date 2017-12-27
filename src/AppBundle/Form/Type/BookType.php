@@ -9,6 +9,7 @@
 namespace AppBundle\Form\Type;
 
 use AppBundle\Entity\User;
+use blackknight467\StarRatingBundle\Form\RatingType;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -38,7 +39,9 @@ class BookType extends AbstractType
 
 //        $builder->add('author', TextType::class);
 
-        $builder->add('release_year', DateType::class);
+        $builder->add('release_year', DateType::class, [
+            'years' => range(date('Y') - 100, date('Y') + 1),
+        ]);
 
         $builder->add(  'publisher', TextType::class);
 
@@ -49,6 +52,8 @@ class BookType extends AbstractType
         $builder->add('pages_number', NumberType::class);
 
         $builder->add('description', TextareaType::class);
+
+        $builder->add('rating', RatingType::class);
 
 //        $builder->add('name', null, array(
 //            'required'   => false,

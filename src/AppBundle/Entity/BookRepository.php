@@ -40,4 +40,16 @@ class BookRepository extends EntityRepository
 
         return $items;
     }
+
+    public function findAllQueryBuilder($filter = '')
+    {
+        $qb = $this->createQueryBuilder('book');
+
+        if ($filter) {
+            $qb->andWhere('book.title LIKE :filter OR book.author LIKE :filter')
+                ->setParameter('filter', '%'.$filter.'%');
+        }
+
+        return $qb;
+    }
 }

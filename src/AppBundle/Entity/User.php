@@ -306,4 +306,33 @@ class User implements UserInterface
     {
         return $this->terms;
     }
+    /**
+     * @var \DateTime
+     */
+    private $date_registered;
+
+
+    /**
+     * Set dateRegistered
+     *
+     * @param \DateTime $dateRegistered
+     *
+     * @return User
+     */
+    public function setDateRegistered($dateRegistered)
+    {
+        $this->date_registered = $dateRegistered;
+
+        return $this;
+    }
+
+    /**
+     * Get dateRegistered
+     *
+     * @return \DateTime
+     */
+    public function getDateRegistered()
+    {
+        return $this->date_registered;
+    }
 }

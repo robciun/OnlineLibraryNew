@@ -20,10 +20,30 @@
                     {#<input type="hidden" name="_target_path" value="{{ path('home') }}" />#}
                     <button type="submit" class="btn btn-success">Login <span class="fa fa-lock"></span></button>
                     <a href="{{ path('user_register') }}">Register</a>
+
+                {#<a href="{{ path('user_register') }}"#}
+                   {#data-sideclick-modal-trigger#}
+                   {#data-target="modal"#}
+                   {#role="button"#}
+                   {#data-callback="reloadTab"#}
+                   {#data-title=""#}
+                   {#class="btn btn-xs btn-default"#}
+                   {#data-toggle="modal-ajax"#}
+                   {#title="{{'Done'}}"><i class="glyphicon glyphicon-ok"></i>#}
+                {#</a>#}
+
                 {{ form_end(form) }}
 
             </div>
         </div>
     </div>
 
+    <div class="modal fade" id="emptyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-async data-target="#emptyModal">
+        <div class="modal-dialog">
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('bundles/sideclickbootstrapmodal/js/sideclick-bootstrap-modal.js') }}"></script>
 {% endblock %}

@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+
 {% block body %}
     <div class="container">
         <div class="row">
@@ -26,7 +27,11 @@
                     {{ form_row(form.terms) }}
                 </span>
                 <span style="display:inline-block">
-                    <a href="{{ path('terms') }}">terms and conditions</a>
+                    {#<a href="{{ path('terms') }}" role="button" class="btn btn-large btn-primary" data-toggle="modal">terms and conditions</a>#}
+                    <a href="{{ path('terms') }}"
+                       data-callback="reloadTab"
+                       onclick="return confirm('In order to publish your article we need your agreement. Please take a moment to read the terms of this license. By submitting your article to one of our books or journals (henceforth ‘publications’), you and all co-authors of your submission agree to the terms of this license. You do not need to fill out a copyright form for confirmation. By submitting your article to one of our publications you grant us (the publisher) the exclusive right to both reproduce and/or distribute your article (including the abstract) throughout the world in electronic, printed or any other medium, and to authorize others (including Reproduction Rights Organizations such as the Copyright Licensing Agency and the Copyright Clearance Center, and other document distributors) to do the same. You agree that we may publish your article, and that we may sell or distribute it, on its own, or with other related material.')"
+                       data-sideclick-modal-trigger>terms and conditions</a>
                 </span>
                 <br>
                 {#formnovalidate#}
@@ -39,4 +44,103 @@
         </div>
     </div>
 
+
+    {#<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">#}
+        {#Launch demo modal#}
+    {#</button>#}
+
+    {#<!-- Modal -->#}
+    {#<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">#}
+        {#<div class="modal-dialog" role="document">#}
+            {#<div class="modal-content">#}
+                {#<div class="modal-header">#}
+                    {#<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>#}
+                    {#<button type="button" class="close" data-dismiss="modal" aria-label="Close">#}
+                        {#<span aria-hidden="true">&times;</span>#}
+                    {#</button>#}
+                {#</div>#}
+                {#<div class="modal-body">#}
+                    {#...#}
+                {#</div>#}
+                {#<div class="modal-footer">#}
+                    {#<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>#}
+                    {#<button type="button" class="btn btn-primary">Save changes</button>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
+
+
+    {#<div id="myModal" class="modal fade">#}
+
+        {#<div class="modal-dialog">#}
+
+            {#<div class="modal-content">#}
+
+                {#<div class="modal-header">#}
+
+                    {#<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>#}
+
+                    {#<h4 class="modal-title">Confirmation</h4>#}
+
+                {#</div>#}
+
+                {#<div class="modal-body">#}
+
+                    {#<p>#}
+                        {#In order to publish your article we need your agreement. Please take a moment to read the terms of this license.#}
+                        {#By submitting your article to one of our books or journals (henceforth ‘publications’), you and all co-authors of your submission agree to the terms of this license. You do not need to fill out a copyright form for confirmation.#}
+
+                        {#By submitting your article to one of our publications you grant us (the publisher) the exclusive right to both reproduce and/or distribute your article (including the abstract) throughout the world in electronic, printed or any other medium, and to authorize others (including Reproduction Rights Organizations such as the Copyright Licensing Agency and the Copyright Clearance Center, and other document distributors) to do the same. You agree that we may publish your article, and that we may sell or distribute it, on its own, or with other related material.#}
+
+                        {#By submitting your article for publication to one of our publications, you promise that the article is your original work, has not previously been published, and is not currently under consideration by another publication. You also promise that the article does not, to the best of your knowledge, contain anything that is libellous, illegal or infringes anyone’s copyright or other rights. If the article contains material that is someone else’s copyright, you promise that you have obtained the unrestricted permission of the copyright owner to use the material and that the material is clearly identified and acknowledged in the text.#}
+
+                        {#We promise that we will respect your rights as the author(s). That is, we will make sure that your name(s) is/are always clearly associated with the article and, while you do allow us to make necessary editorial changes, we will not make any substantial alterations to your article without consulting you.#}
+
+                        {#By submission of a manuscript the corresponding author confirms that all co-authors have seen and approved the validity of the contents and approve the manuscript’s submission. On behalf of all co-authors, the corresponding author shall take complete responsibility for the submission and its correspondence and the Publisher cannot be held responsible for any incomplete or incorrect manuscript submitted by the corresponding author(s). No authors will be added or removed post submission, unless the journal editor and all co-authors are informed and are in agreement to this change.#}
+
+                        {#The corresponding author also declares that on the acceptance of the manuscript s/he is responsible for the payment of the publication fee in those journals that carry a required fee on acceptance.#}
+
+                        {#Copyright remains yours, and we will acknowledge this in the copyright line that appears on your article. You also retain the right to use your own article in the following ways, as long as you do not sell it in ways that would conflict directly with our efforts to disseminate it. Acknowledgement of the published original must be made in standard bibliographic citation form.#}
+
+                        {#You are free to post the manuscript version of your article on your personal, your institute’s, company’s or funding agency’s website and/or in an online repository as long as you give acknowledgement (by inserting a citation) to the version as published in the book/journal and a link is inserted to the published article on the website of IOS Press.”;#}
+                        {#You may use the article, in whole or in part, as the basis for your own further publications or spoken presentations;#}
+                        {#For a fee you can order a full text PDF file of the published version of your article, including the right to post this PDF file on your personal, your institute’s, company’s or funding agency’s website and in their repository. However, you are not allowed to store it in any other repository.#}
+                    {#</p>#}
+
+                {#</div>#}
+
+                {#<div class="modal-footer">#}
+
+                    {#<button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>#}
+
+                {#</div>#}
+
+            {#</div>#}
+
+        {#</div>#}
+
+    {#</div>#}
+
+    <div class="modal fade" id="emptyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-async data-target="#emptyModal">
+        <div class="modal-dialog">
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    {#<script type="text/javascript">#}
+
+        {#$(document).ready(function(){#}
+
+            {#$(".btn").click(function(){#}
+
+                {#$("#myModal").modal('show');#}
+
+            {#});#}
+
+        {#});#}
+
+    {#</script>#}
+    <script src="{{ asset('bundles/sideclickbootstrapmodal/js/sideclick-bootstrap-modal.js') }}"></script>
 {% endblock %}

@@ -16,7 +16,10 @@
             <th>{{'Email'|trans({}, 'fields')}}</th>
             <th>{{'Username'|trans({}, 'fields')}}</th>
             <th>{{'Name'|trans({}, 'fields')}}</th>
-            <th>{{'Surname'|trans({}, 'fields')}}</th>
+            {#<th>{{'Surname'|trans({}, 'fields')}}</th>#}
+            {% if is_granted('ROLE_ADMIN') %}
+                <th>{{'Register date'|trans({}, 'fields')}}</th>
+            {% endif %}
         </tr>
         </thead>
 
@@ -30,7 +33,10 @@
                 <td>{{ user.email }}</td>
                 <td>{{ user.username }}</td>
                 <td>{{ user.name }}</td>
-                <td>{{ user.surname }}</td>
+                {#<td>{{ user.surname }}</td>#}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <td>{{ user.dateRegistered|date("m/d/Y H:i") }}</td>
+                {% endif %}
                 <td>
                     {% if is_granted('ROLE_ADMIN') %}
                         <div class="btn-toolbar nomargin">

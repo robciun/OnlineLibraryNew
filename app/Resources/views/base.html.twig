@@ -73,7 +73,8 @@
         </div>
 
         {% block javascripts %}
-            <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+            <script type="text/javascript" src="{{ asset('assets/vendor/jquery/src/jquery.js') }}"></script>
+            {#<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>#}
             <script src="{{ asset('js/main.js') }}"></script>
             <script src="{{ asset('assets/vendor/dropzone/dist/min/dropzone.min.js') }}"></script>
             {#<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>#}

@@ -37,7 +37,7 @@ class UserController extends Controller
 //            $request->getSession()->getFlashBag()
 //                ->add('success', 'Welcome to the Death Star, have a magical day!');
 //            $flash = $this->addFlash('success', 'Welcome '.$user->getUsername());
-
+            $user->setDateRegistered(new \DateTime('now'));
             return $this->get('security.authentication.guard_handler')
                 ->authenticateUserAndHandleSuccess(
                     $user,

@@ -17,11 +17,12 @@
 
     {% set no = 1 %}
 
-        {#<form>#}
-            {#<input name="q" type="search">#}
-            {#<input type="submit" value="Find">#}
-        {#</form>#}
-
+    <div id="search">
+        <form>
+            <input name="q" type="search">
+            <input type="submit" value="Find">
+        </form>
+    </div>
     {#{% for books in book %}#}
     {#{% block stylesheets %}#}
         {#<link href="{{ asset(asset('https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css')) }}" type="text/css" rel="stylesheet" />#}
@@ -82,6 +83,9 @@
         <th>{{'Description'|trans({}, 'fields')}}</th>
         <th>{{'Comments count'|trans({}, 'fields')}}</th>
         <th>{{'Rating'|trans({}, 'fields')}}</th>
+        {% if is_granted('ROLE_ADMIN') %}
+        <th>{{'Date created'|trans({}, 'fields')}}</th>
+        {% endif %}
         {#<th>{{'Readers count'|trans({}, 'fields')}}</th>#}
         {#<th>{{'Last read page'|trans({}, 'fields')}}</th>#}
         <th>
@@ -101,7 +105,7 @@
             {% set no = no + 1 %}
 
             {#<td><a href="{{ path('book_show', {'entityId': book.id}) }}">{{ book.title }}</a></td>#}
-            <td><a href="{{ path('files_list') }}">{{ book.title }}</a></td>
+            <td><a href="{{ path('files_list') }}" data-sideclick-modal-trigger>{{ book.title }}</a></td>
             <td>{{ book.author }}</td>
             <td>{{ book.releaseYear|date("m/d/Y") }}</td>
             <td>{{ book.publisher }}</td>
@@ -110,7 +114,11 @@
             <td>{{ book.pagesNumber }}</td>
             <td>{{ book.description }}</td>
             <td>{{ book.commentsCount }}</td>
+            {#<td><a href="{{ path('rating') }}">{{ book.rating }}</a></td>#}
             <td>{{ book.rating }}</td>
+            {% if is_granted('ROLE_ADMIN') %}
+            <td>{{ book.dateCreated|date("m/d/Y H:i") }}</td>
+            {% endif %}
             {#<td>{{ book.readersCount }}</td>#}
             {#<td>{{ book.lastReadPage }}</td>#}
             <td>
@@ -140,6 +148,16 @@
     </tbody>
 
 </table>
+
+    <div class="modal fade" id="emptyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-async data-target="#emptyModal">
+        <div class="modal-dialog">
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('bundles/sideclickbootstrapmodal/js/sideclick-bootstrap-modal.js') }}"></script>
 {% endblock %}
 {#{% block javascripts %}#}
     {#<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>#}

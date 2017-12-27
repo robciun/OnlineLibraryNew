@@ -11,6 +11,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Book;
 use AppBundle\Entity\User;
 use AppBundle\Form\Type\BookType;
+use AppBundle\Form\Type\NewRatingType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -79,6 +80,7 @@ class BookController extends Controller
 
             $book->setUserEmail($this->container->get('security.token_storage')->getToken()->getUser()->getEmail());
             $book->setAuthor($this->container->get('security.token_storage')->getToken()->getUser()->getName());
+            $book->setDateCreated(new \DateTime('now'));
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($book);
@@ -87,6 +89,32 @@ class BookController extends Controller
         }
 
         return $this->render('@App/new.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/newRating", name="rating")
+     * @param Request $request
+     * @return Response
+     */
+    public function getRating(Request $request)
+    {
+        $book = new Book();
+
+        $form = $this->createForm(NewRatingType::class, $book);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid() && $form->isSubmitted()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($book);
+            $em->flush();
+            return $this->redirectToRoute('book_list');
+        }
+
+        return $this->render('@App/rating.html.twig', [
             'form' => $form->createView(),
         ]);
     }

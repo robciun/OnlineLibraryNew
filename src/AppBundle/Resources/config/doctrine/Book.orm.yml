@@ -48,4 +48,10 @@ AppBundle\Entity\Book:
         user_email:
             type: string
             nullable: true
+        date_created:
+            type: datetime
+            nullable: true
+        rating:
+            type: integer
+            nullable: true
     lifecycleCallbacks: {  }
