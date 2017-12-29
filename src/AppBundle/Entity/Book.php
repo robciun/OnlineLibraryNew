@@ -448,4 +448,62 @@ class Book
     {
         return $this->date_created;
     }
+    /**
+     * @var \AppBundle\Entity\Media
+     */
+    private $contact;
+
+
+    /**
+     * Set contact
+     *
+     * @param \AppBundle\Entity\Media $contact
+     *
+     * @return Book
+     */
+    public function setContact(\AppBundle\Entity\Media $contact = null)
+    {
+        $this->contact = $contact;
+
+        return $this;
+    }
+
+    /**
+     * Get contact
+     *
+     * @return \AppBundle\Entity\Media
+     */
+    public function getContact()
+    {
+        return $this->contact;
+    }
+    /**
+     * @var string
+     */
+    private $book_name;
+
+
+    /**
+     * Set bookName
+     *
+     * @param string $bookName
+     *
+     * @return Book
+     */
+    public function setBookName($bookName)
+    {
+        $this->book_name = $bookName;
+
+        return $this;
+    }
+
+    /**
+     * Get bookName
+     *
+     * @return string
+     */
+    public function getBookName()
+    {
+        return $this->book_name;
+    }
 }

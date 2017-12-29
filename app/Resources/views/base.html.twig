@@ -9,6 +9,8 @@
             <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
             <link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/font-awesome.min.css') }}">
             <link rel="stylesheet" href="{{ asset('assets/vendor/dropzone/dist/min/dropzone.min.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+            {#<link rel="stylesheet" type="text/css" href="{{ asset('https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css') }}" />#}
             {#<link rel="stylesheet" href="{{ asset('https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css')}}">#}
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -30,13 +32,15 @@
             <img class="logo-icon" src="{{ asset('images/lib.png') }}">
             <h1 class="logo">Online Library</h1>
             <ul class="navi">
-                <li>Welcome {{ app.user ? app.user.username : 'Guest' }}!</li>
+                <div style="margin-right: 10px">
+                    <li>Welcome {{ app.user ? app.user.username : 'Guest'  }}!</li>
+                </div>
                 {#<li class="search"><a href="#" class="js-header-search-toggle"><i class="fa fa-search"></i></a></li>#}
                 {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
                     <li><a href="{{ path('user_logout') }}">Logout</a></li>
                 {% else %}
-                    <li><a href="{{ path('user_register') }}">Register</a></li>
-                    <li><a href="{{ path('user_login') }}">Login</a></li>
+                    {#<li><a href="{{ path('user_register') }}">Sign up</a></li>#}
+                    <li><a href="{{ path('user_login') }}">Login/Sign up</a></li>
                 {% endif %}
             </ul>
         </header>
@@ -78,6 +82,7 @@
             <script src="{{ asset('js/main.js') }}"></script>
             <script src="{{ asset('assets/vendor/dropzone/dist/min/dropzone.min.js') }}"></script>
             {#<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>#}
+            <script src="{{ asset('bundles/sideclickbootstrapmodal/js/sideclick-bootstrap-modal.js') }}"></script>
         {% endblock %}
     </body>
 </html>

@@ -1,9 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}New Book {% endblock %}
-{#{% block stylesheets %}#}
-    {#<link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />#}
-{#{% endblock %}#}
 {% block body %}
 
     <h1 class="page-header text-center">
@@ -24,6 +21,8 @@
                 </div>
                 <div class="fixed-wrapper">
                     <input type="submit" class="btn btn-block btn-primary" value="Save" />
+                </div>
+                <div style="text-align: center">
                     <a href="{{ path('book_list') }}">Cancel</a>
                 </div>
 
@@ -36,7 +35,7 @@
 {% endblock body %}
 
 {% block javascripts %}
-    {#{{ parent() }}#}
+    {{ parent() }}
 
     <script>
 
@@ -81,6 +80,6 @@
 
 
     </script>
-    {#<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>#}
-    {#<script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>#}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
 {% endblock javascripts %}

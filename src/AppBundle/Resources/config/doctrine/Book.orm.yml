@@ -54,4 +54,8 @@ AppBundle\Entity\Book:
         rating:
             type: integer
             nullable: true
+        book_name:
+            type: string
+            nullable: false
+            lenght: 510
     lifecycleCallbacks: {  }

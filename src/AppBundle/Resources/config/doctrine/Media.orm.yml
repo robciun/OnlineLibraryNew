@@ -11,4 +11,7 @@ AppBundle\Entity\Media:
             type: string
             nullable: false
             lenght: 510
+        date_created:
+            type: datetime
+            nullable: true
     lifecycleCallbacks: {  }

@@ -9,6 +9,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Book;
+use AppBundle\Entity\Media;
 use AppBundle\Entity\User;
 use AppBundle\Form\Type\BookType;
 use AppBundle\Form\Type\NewRatingType;
@@ -22,6 +23,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\VarDumper\VarDumper;
 
 class BookController extends Controller
 {
@@ -51,20 +53,12 @@ class BookController extends Controller
      */
     public function newAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
         $book = new Book();
+        $media = $em->getRepository('AppBundle:Media')->getLast();
+        $getResults = $media["file_name"];
 
         $form = $this->createForm(BookType::class, $book);
-
-//        $author = [$this->container->get('security.token_storage')->getToken()->getUser()->getName(), $this->container->get('security.token_storage')->getToken()->getUser()->getSurname()];
-////        $author = '';
-//
-//        $form = $this->createFormBuilder()
-//            ->add('author', ChoiceType::class, [
-//                'choices' => $author,
-//                'required' => false,
-//                'placeholder' => ''
-//            ])
-//            ->getForm();
 
         $form->handleRequest($request);
 
@@ -81,6 +75,7 @@ class BookController extends Controller
             $book->setUserEmail($this->container->get('security.token_storage')->getToken()->getUser()->getEmail());
             $book->setAuthor($this->container->get('security.token_storage')->getToken()->getUser()->getName());
             $book->setDateCreated(new \DateTime('now'));
+            $book->setBookName($getResults);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($book);

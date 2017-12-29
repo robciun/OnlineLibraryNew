@@ -20,6 +20,23 @@ use Symfony\Component\VarDumper\VarDumper;
 
 class DefaultController extends Controller
 {
+    use \Sideclick\BootstrapModalBundle\Controller\ControllerTrait;
+
+    public function thisActionWillRedirect(Request $request)
+    {
+        return $this->redirectWithAjaxSupport($request, '/new/url');
+    }
+
+//    public function thisActionWillReload(Request $request)
+//    {
+//        return $this->reloadWithAjaxSupport($request);
+//    }
+
+    public function thisActionWillReload(Request $request)
+    {
+        return $this->redirectToRouteWithAjaxSupport($request,'terms',['parameters'=>$parameters]);
+    }
+
     /**
      * @Route("/shower/{entityId}", name="book_show")
      * @param Request $request
@@ -165,6 +182,7 @@ class DefaultController extends Controller
 
             $mediaEntity = new Media();
             $mediaEntity->setFileName($fileName);
+            $mediaEntity->setDateCreated(new \DateTime('now'));
 
             $em->persist($mediaEntity);
             $em->flush();
@@ -209,20 +227,56 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/fileList", name="files_list")
+     * @Route("/fileList/{id}", name="files_list")
      * @param Request $request
+     * @param $id
      * @return Response
      */
-    public function findFile()
+    public function findFile($id)
     {
         $em = $this->getDoctrine()->getManager();
         $filesList = $em->getRepository('AppBundle:Media')->getValuesList();
 //        VarDumper::dump($filesList);
         $finder = new Finder();
         $fileContent = $finder->files()->in('C:\xampp\htdocs\symfonyNew\web\uploads')/*->name('ef7d9937179949d98b83eb9729a10f4f.pdf')*/;
+//        foreach ($filesList as $file) {
+//            $getValues = array_values($file);
+////            return $getValues;
+////            VarDumper::dump(array_values($getValues));
+//            foreach ($getValues as $result) {
+//                return new BinaryFileResponse('C:\xampp\htdocs\symfonyNew\web\uploads' . DIRECTORY_SEPARATOR . $result);
+//            }
+//        }
+//        VarDumper::dump(array_values($filesList));
+//        VarDumper::dump(array_values($filesList));
+//        $anotherArray = [];
+//        foreach ($filesList as $key => $value) {
+//            VarDumper::dump($anotherArray[$key]);
+//        }
 //        $fileContent = $finder->files()->in('C:\xampp\htdocs\symfonyNew\web\uploads');
-        $getFiles = [$filesList];
+//        $getFiles = [$filesList];
+//        VarDumper::dump($filesList[0]["file_name"]);
 
+        $file = $em->find(Book::class, $id);
+        $fileData = $file->getBookName();
+//        $finalResult = $fileData["file_name"];
+
+//        $getResults = $filesList["file_name"];
+//        $dynamicFiles = array_values($filesList);
+
+//        foreach ($filesList as $x => $xValue) {
+//            VarDumper::dump(array_values($xValue));
+//        }
+//        VarDumper::dump(array_values($dynamicFiles[1]));
+//        $firsReplace = str_replace("[","", json_encode(array_values($dynamicFiles[0])));
+////        VarDumper::dump($firsReplace);
+//        $secodReplace = str_replace("]","", $firsReplace);
+////        VarDumper::dump($secodReplace);
+//        $thirdReplace = str_replace('"',"", $secodReplace);
+//        VarDumper::dump($thirdReplace);
+//        VarDumper::dump(str_replace(['[', '""'], [']', '""'], json_encode(array_values($dynamicFiles[0]))));
+        $staticFiles = ['08d9a86a7032960f71fc11b8d7bdf073.pdf', '50e2c05c927f9afe169476b7b2018533.pdf', 'ef7d9937179949d98b83eb9729a10f4f.pdf', '127aaa70dbe8d2dacc9d2f993f40b61d.pdf', '8d3631c458e6561dff980667202f03b7.pdf'];
+//        VarDumper::dump($staticFiles[1]);
 //        $response = new Response($fileContent);
 //////
 //        $disposition = $response->headers->makeDisposition(
@@ -248,10 +302,11 @@ class DefaultController extends Controller
 ////            return new BinaryFileResponse('C:\xampp\htdocs\symfonyNew\web\uploads'  .$file);
 //            return new Response($file);
 //        }
-        return new BinaryFileResponse('C:\xampp\htdocs\symfonyNew\web\uploads\08d9a86a7032960f71fc11b8d7bdf073.pdf');
+
+//        return new BinaryFileResponse('C:\xampp\htdocs\symfonyNew\web\uploads\08d9a86a7032960f71fc11b8d7bdf073.pdf');
 //        $filesList = ['ef7d9937179949d98b83eb9729a10f4f.pdf', '45f7949c9774a608e73ab10a67cdccb7.png'];
 //        $id = 0;
-//        return new BinaryFileResponse('C:\xampp\htdocs\symfonyNew\web\uploads' . DIRECTORY_SEPARATOR  . $filesList[0]);
+        return new BinaryFileResponse('C:\xampp\htdocs\symfonyNew\web\uploads' . DIRECTORY_SEPARATOR  . $fileData);
 //        return $this->render('@App/home.html.twig');
 //        return new Response('1');
     }
@@ -266,4 +321,13 @@ class DefaultController extends Controller
         return $this->render('@App/terms.html.twig');
     }
 
+    /**
+     * @Route("/summer", name="summernote")
+     * @param Request $request
+     * @return Response
+     */
+    public function summerNote()
+    {
+        return $this->render('@App/summernote.html.twig');
+    }
 }

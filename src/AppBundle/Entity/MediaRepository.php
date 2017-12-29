@@ -33,4 +33,26 @@ class MediaRepository extends EntityRepository
 
         return $items;
     }
+
+    public function getLast()
+    {
+        return $this->createQueryBuilder('m')->
+        select('m.file_name')->
+        orderBy('m.date_created', 'DESC')->
+        setMaxResults(1)->
+        getQuery()->
+        getOneOrNullResult();
+    }
+
+    public function openFile($fileName)
+    {
+        $qb = $this->createQueryBuilder('m');
+
+        $qb->select('m.file_name')
+            ->setParameter('file_name', $fileName);
+
+        $item = $qb->getQuery()->getOneOrNullResult();
+
+        return $item;
+    }
 }

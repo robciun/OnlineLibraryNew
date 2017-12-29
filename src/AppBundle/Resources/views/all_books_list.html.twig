@@ -17,7 +17,7 @@
 
     {% set no = 1 %}
 
-    <div id="search">
+    <div style="text-align: right" id="search">
         <form>
             <input name="q" type="search">
             <input type="submit" value="Find">
@@ -86,6 +86,9 @@
         {% if is_granted('ROLE_ADMIN') %}
         <th>{{'Date created'|trans({}, 'fields')}}</th>
         {% endif %}
+        {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
+            <th>{{'Book name'|trans({}, 'fields')}}</th>
+        {% endif %}
         {#<th>{{'Readers count'|trans({}, 'fields')}}</th>#}
         {#<th>{{'Last read page'|trans({}, 'fields')}}</th>#}
         <th>
@@ -105,7 +108,7 @@
             {% set no = no + 1 %}
 
             {#<td><a href="{{ path('book_show', {'entityId': book.id}) }}">{{ book.title }}</a></td>#}
-            <td><a href="{{ path('files_list') }}" data-sideclick-modal-trigger>{{ book.title }}</a></td>
+            <td>{{ book.title }}</td>
             <td>{{ book.author }}</td>
             <td>{{ book.releaseYear|date("m/d/Y") }}</td>
             <td>{{ book.publisher }}</td>
@@ -118,6 +121,9 @@
             <td>{{ book.rating }}</td>
             {% if is_granted('ROLE_ADMIN') %}
             <td>{{ book.dateCreated|date("m/d/Y H:i") }}</td>
+            {% endif %}
+            {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
+                <td><a href="{{ path('files_list', {'id': book.id}) }}">{{ book.bookName }}</a></td>
             {% endif %}
             {#<td>{{ book.readersCount }}</td>#}
             {#<td>{{ book.lastReadPage }}</td>#}
