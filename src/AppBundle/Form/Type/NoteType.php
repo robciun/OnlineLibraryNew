@@ -27,6 +27,7 @@ class NoteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('note', TextType::class);
+        $builder->add('note', TextType::class);
     }
 
     public function getName()

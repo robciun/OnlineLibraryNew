@@ -7,9 +7,15 @@ AppBundle\Entity\Note:
             id: true
             generator:
                 strategy: AUTO
+        username:
+            type: string
+            lenght: 255
         note:
             type: string
             lenght: 510
+        created:
+            type: datetime
+            nullable: true
     lifecycleCallbacks: {  }
     manyToOne:
         book:

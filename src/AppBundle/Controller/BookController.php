@@ -10,6 +10,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Book;
 use AppBundle\Entity\Media;
+use AppBundle\Entity\Note;
 use AppBundle\Entity\User;
 use AppBundle\Form\Type\BookType;
 use AppBundle\Form\Type\NewRatingType;

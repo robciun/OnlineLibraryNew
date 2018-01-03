@@ -13,6 +13,27 @@ class Note
     private $id;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Note")
+     */
+    private $userNote;
+
+    /**
+     * @return mixed
+     */
+    public function getUserNote()
+    {
+        return $this->userNote;
+    }
+
+    /**
+     * @param mixed $userNote
+     */
+    public function setUserNote($userNote)
+    {
+        $this->userNote = $userNote;
+    }
+
+    /**
      * @var string
      */
     private $note;
@@ -80,5 +101,62 @@ class Note
     {
         return $this->book;
     }
-}
+    /**
+     * @var string
+     */
+    private $username;
 
+    /**
+     * @var \DateTime
+     */
+    private $created;
+
+
+    /**
+     * Set username
+     *
+     * @param string $username
+     *
+     * @return Note
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     *
+     * @return Note
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+}

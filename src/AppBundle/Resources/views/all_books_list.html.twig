@@ -116,7 +116,10 @@
             <td>{{ book.language }}</td>
             <td>{{ book.pagesNumber }}</td>
             <td>{{ book.description }}</td>
-            <td>{{ book.commentsCount }}</td>
+            <td><a href="{{ path('note_new') }}"
+                   class="terms_button"
+                   data-toggle="modal"
+                   data-target="#exampleModal">{{ book.commentsCount }}</a></td>
             {#<td><a href="{{ path('rating') }}">{{ book.rating }}</a></td>#}
             <td>{{ book.rating }}</td>
             {% if is_granted('ROLE_ADMIN') %}
@@ -163,7 +166,24 @@
 {% endblock %}
 
 {% block javascripts %}
-<script src="{{ asset('bundles/sideclickbootstrapmodal/js/sideclick-bootstrap-modal.js') }}"></script>
+    <script type="text/javascript">
+
+        //        $(document).ready(function(){
+        $(document).on("click", ".terms_button", function(e){
+
+//            $(".btn").click(function(){
+
+            $("#exampleModal").modal('show');
+
+//            });
+
+        });
+
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    {#<script src="{{ asset('bundles/sideclickbootstrapmodal/js/sideclick-bootstrap-modal.js') }}"></script>#}
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/sideclickbootstrapmodal/js/sideclick-bootstrap-modal.js') }}"></script>
 {% endblock %}
 {#{% block javascripts %}#}
     {#<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>#}
