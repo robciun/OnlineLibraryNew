@@ -135,17 +135,35 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/shower/{entityId}/notes", name="book_notes")
+     * @Route("/shower/{name}/notes", name="book_notes")
      * @Method("GET")
      * @param $entityId
      */
-    public function getNotesAction($entityId)
+    public function getNotesAction(Book $book)
     {
-        $notes = [
-            ['id' => 1, 'username' => 'AquaPelham', 'avatarUri' => '/images/leanna.jpeg', 'note' => 'Very interesting book', 'date' => 'Dec. 10, 2015'],
-            ['id' => 2, 'username' => 'AquaWeaver', 'avatarUri' => '/images/ryan.jpeg', 'note' => 'nice book', 'date' => 'Dec. 1, 2015'],
-            ['id' => 3, 'username' => 'AquaPelham', 'avatarUri' => '/images/leanna.jpeg', 'note' => 'Inked!', 'date' => 'Aug. 20, 2015'],
-        ];
+
+        $em = $this->getDoctrine()->getManager();
+        $bookNote = $em->getRepository('AppBundle:Book')
+            ->findOneBy(['name' => $book]);
+
+        $notes = [];
+
+        foreach ($bookNote->getNotes() as $note) {
+            $notes[] = [
+                'id' => $note->getId(),
+                'username' => $note->getAuthor,
+                'note' => $note->getNote(),
+                'date' => $note->created()->format('M d, Y')
+            ];
+//            dump($note);
+        }
+
+//        $notes = [
+//
+//            ['id' => 1, 'username' => 'AquaPelham', 'avatarUri' => '/images/leanna.jpeg', 'note' => 'Very interesting book', 'date' => 'Dec. 10, 2015'],
+//            ['id' => 2, 'username' => 'AquaWeaver', 'avatarUri' => '/images/ryan.jpeg', 'note' => 'nice book', 'date' => 'Dec. 1, 2015'],
+//            ['id' => 3, 'username' => 'AquaPelham', 'avatarUri' => '/images/leanna.jpeg', 'note' => 'Inked!', 'date' => 'Aug. 20, 2015'],
+//        ];
 //        $em = $this->getDoctrine()->getManager();
 //        $note = $em->find('AppBundle:Note', $entityId);
 //        $note->getNote();

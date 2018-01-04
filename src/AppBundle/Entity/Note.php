@@ -39,6 +39,8 @@ class Note
     private $note;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Book", inversedBy="notes")
+     * @ORM\JoinColumn(nullable=false)
      * @var \AppBundle\Entity\Book
      */
     private $book;

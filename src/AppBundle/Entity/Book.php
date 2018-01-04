@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 /**
@@ -73,6 +74,11 @@ class Book
      */
     private $last_read_page;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Note", mappedBy="book")
+     * @ORM\OrderBy({"created" = "DESC"})
+     */
+    private $notes;
 
     /**
      * Get id
@@ -84,6 +90,10 @@ class Book
         return $this->id;
     }
 
+    public function __construct()
+    {
+        $this->notes = new ArrayCollection();
+    }
 //    public function getUploadBook()
 //    {
 //        return $this->upload_book;
@@ -95,6 +105,15 @@ class Book
 //
 //        return $this;
 //    }
+
+    /**
+     * @return ArrayCollection|Note[]
+     */
+    public function getNotes()
+    {
+        return $this->notes;
+    }
+
 
     /**
      * Set title

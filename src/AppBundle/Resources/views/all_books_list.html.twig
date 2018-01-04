@@ -184,6 +184,9 @@
     {#<script src="{{ asset('bundles/sideclickbootstrapmodal/js/sideclick-bootstrap-modal.js') }}"></script>#}
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('bundles/sideclickbootstrapmodal/js/sideclick-bootstrap-modal.js') }}"></script>
+    <script type="text/babel">
+        var notesUrl = '{{ path('book_notes', {'name': book.name}) }}';
+    </script>
 {% endblock %}
 {#{% block javascripts %}#}
     {#<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>#}
