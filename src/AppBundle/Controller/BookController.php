@@ -14,6 +14,7 @@ use AppBundle\Entity\Note;
 use AppBundle\Entity\User;
 use AppBundle\Form\Type\BookType;
 use AppBundle\Form\Type\NewRatingType;
+use blackknight467\StarRatingBundle\Form\RatingType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -61,7 +62,15 @@ class BookController extends Controller
 
         $form = $this->createForm(BookType::class, $book);
 
+        if ($this->container->get('security.token_storage')->getToken()->getUser()->getRole() == "ROLE_ADMIN") {
+            $form->add('rating', RatingType::class);
+        }
+
         $form->handleRequest($request);
+//
+//        if ($this->container->get('security.token_storage')->getToken()->getUser()->getRole() == "ROLE_ADMIN") {
+//            $form->add('rating', RatingType::class);
+//        }
 
         if ($form->isValid() && $form->isSubmitted()) {
 
@@ -77,7 +86,6 @@ class BookController extends Controller
             $book->setAuthor($this->container->get('security.token_storage')->getToken()->getUser()->getName());
             $book->setDateCreated(new \DateTime('now'));
             $book->setBookName($getResults);
-
             $em = $this->getDoctrine()->getManager();
             $em->persist($book);
             $em->flush();

@@ -53,7 +53,10 @@ class BookType extends AbstractType
 
         $builder->add('description', TextareaType::class);
 
-        $builder->add('rating', RatingType::class);
+
+//        if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
+//            $builder->add('rating', RatingType::class);
+//        }
 
 //        $builder->add('name', null, array(
 //            'required'   => false,

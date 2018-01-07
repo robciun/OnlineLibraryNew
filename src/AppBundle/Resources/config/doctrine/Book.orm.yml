@@ -51,11 +51,18 @@ AppBundle\Entity\Book:
         date_created:
             type: datetime
             nullable: true
-        rating:
-            type: integer
-            nullable: true
         book_name:
             type: string
             nullable: false
             lenght: 510
+        ISBN:
+            type: string
+            lenght: 13
     lifecycleCallbacks: {  }
+    oneToMany:
+        note:
+            targetEntity: AppBundle\Entity\Note
+            mappedBy: book
+            joinColumn:
+                name: note_id
+                referencedColumnName: id

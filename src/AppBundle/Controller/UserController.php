@@ -9,7 +9,9 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\ChangePassword;
 use AppBundle\Entity\User;
+use AppBundle\Form\Type\ChangePasswordType;
 use AppBundle\Form\Type\RegistrationType;
 use AppBundle\Form\Type\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -124,5 +126,29 @@ class UserController extends Controller
         }
 
         return $this->redirectToRoute('user_list');
+    }
+
+    /**
+     * @Route("/changePassword", name="change_pw")
+     * @param Request $request
+     * @return Response
+     */
+    public function changePasswordAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $changePassword = new ChangePassword();
+        $form = $this->createForm(ChangePasswordType::class, $changePassword);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+//            $em->persist($changePassword);
+            return $this->redirectToRoute('user_login');
+        }
+
+        return $this->render('@App/change_pw.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 }

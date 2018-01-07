@@ -40,13 +40,15 @@ class NoteController extends Controller
 //            ->add('note', TextType::class)
 //            ->add('save', SubmitType::class, array('label' => 'Add Note'))
 //            ->getForm();
-
             $note->setUsername($this->container->get('security.token_storage')->getToken()->getUser()->getName());
+//            $note->setUsername('atona');
             $note->setCreated(new \DateTime('now'));
+
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($note);
             $em->flush();
+//            return $this->redirectToRoute('book_list');
         }
 
         return $this->render('@App/note.html.twig', [

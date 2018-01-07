@@ -3,3 +3,14 @@ new:
     defaults: { _controller: AppBundle:Main:index }
     requirements:
     _method:  GET
+book-search:
+    path:  /showList
+    defaults: { _controller: AppBundle:Book:show , page: 1 }
+    requirements:
+        method:  GET
+
+obtao-article-search-paginated:
+    path:  /showList/{page}
+    defaults: { _controller: AppBundle:Book:show }
+    requirements:
+        method:  GET

@@ -26,4 +26,16 @@ class LoginType extends AbstractType
             ->add('_username')
             ->add('_password', PasswordType::class);
     }
+
+    public function setDefaultOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'data_class' => 'AppBundle\Entity\User'
+        ]);
+    }
+
+    public function getName()
+    {
+        return 'login';
+    }
 }

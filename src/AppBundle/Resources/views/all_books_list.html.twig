@@ -17,6 +17,13 @@
 
     {% set no = 1 %}
 
+    {#<h2>Filter</h2>#}
+    {#<div class="row">#}
+        {#<div class="col-md-5">#}
+            {#{{ form(searchForm) }}#}
+        {#</div>#}
+    {#</div>#}
+
     <div style="text-align: right" id="search">
         <form>
             <input name="q" type="search">
@@ -89,6 +96,7 @@
         {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
             <th>{{'Book name'|trans({}, 'fields')}}</th>
         {% endif %}
+        <th>{{'ISBN'|trans({}, 'fields')}}</th>
         {#<th>{{'Readers count'|trans({}, 'fields')}}</th>#}
         {#<th>{{'Last read page'|trans({}, 'fields')}}</th>#}
         <th>
@@ -107,8 +115,8 @@
             <td>{{ no }}</td>
             {% set no = no + 1 %}
 
-            {#<td><a href="{{ path('book_show', {'entityId': book.id}) }}">{{ book.title }}</a></td>#}
-            <td>{{ book.title }}</td>
+            <td><a href="{{ path('book_show', {'entityId': book.id}) }}">{{ book.title }}</a></td>
+            {#<td>{{ book.title }}</td>#}
             <td>{{ book.author }}</td>
             <td>{{ book.releaseYear|date("m/d/Y") }}</td>
             <td>{{ book.publisher }}</td>
@@ -128,6 +136,7 @@
             {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
                 <td><a href="{{ path('files_list', {'id': book.id}) }}">{{ book.bookName }}</a></td>
             {% endif %}
+            <td>{{ book.iSBN }}</td>
             {#<td>{{ book.readersCount }}</td>#}
             {#<td>{{ book.lastReadPage }}</td>#}
             <td>
@@ -180,13 +189,37 @@
         });
 
     </script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('body').find('[name="sortSelect"]').on('change',function(){
+                var arr_val = $(this).val().split(' ');
+                // check if keys 0 and 1 exist in array
+                if (!arr_val || (arr_val.constructor !== Array && arr_val.constructor !== Object)) {
+                    return false;
+                } else {
+                    if ((0 in arr_val) && (1 in arr_val)){
+                        $('[name="sort"]').val(arr_val[0]);
+                        $('[name="direction"]').val(arr_val[1]);
+                        $('[name="page"]').val(1);
+                    }else{
+                        $('[name="sort"]').val('');
+                        $('[name="direction"]').val('');
+                    }
+                }
+                // changing the sort order run a new search
+                $('form').submit();
+            });
+        });
+    </script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     {#<script src="{{ asset('bundles/sideclickbootstrapmodal/js/sideclick-bootstrap-modal.js') }}"></script>#}
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('bundles/sideclickbootstrapmodal/js/sideclick-bootstrap-modal.js') }}"></script>
-    <script type="text/babel">
-        var notesUrl = '{{ path('book_notes', {'name': book.name}) }}';
-    </script>
+    {#<script type="text/babel">#}
+        {#var notesUrl = '{{ path('book_notes', {'name': book.name}) }}';#}
+    {#</script>#}
 {% endblock %}
 {#{% block javascripts %}#}
     {#<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>#}

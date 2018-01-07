@@ -525,4 +525,72 @@ class Book
     {
         return $this->book_name;
     }
+    /**
+     * @var string
+     */
+    private $ISBN;
+
+
+    /**
+     * Set iSBN
+     *
+     * @param string $iSBN
+     *
+     * @return Book
+     */
+    public function setISBN($iSBN)
+    {
+        $this->ISBN = $iSBN;
+
+        return $this;
+    }
+
+    /**
+     * Get iSBN
+     *
+     * @return string
+     */
+    public function getISBN()
+    {
+        return $this->ISBN;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $note;
+
+
+    /**
+     * Add note
+     *
+     * @param \AppBundle\Entity\Note $note
+     *
+     * @return Book
+     */
+    public function addNote(\AppBundle\Entity\Note $note)
+    {
+        $this->note[] = $note;
+
+        return $this;
+    }
+
+    /**
+     * Remove note
+     *
+     * @param \AppBundle\Entity\Note $note
+     */
+    public function removeNote(\AppBundle\Entity\Note $note)
+    {
+        $this->note->removeElement($note);
+    }
+
+    /**
+     * Get note
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
 }

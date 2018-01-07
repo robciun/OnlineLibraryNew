@@ -20,6 +20,8 @@ class AppKernel extends Kernel
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new \Sideclick\BootstrapModalBundle\SideclickBootstrapModalBundle(),
             new blackknight467\StarRatingBundle\StarRatingBundle(),
+            new FOS\ElasticaBundle\FOSElasticaBundle(),
+            new \WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

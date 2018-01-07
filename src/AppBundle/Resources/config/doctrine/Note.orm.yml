@@ -20,6 +20,7 @@ AppBundle\Entity\Note:
     manyToOne:
         book:
             targetEntity: AppBundle\Entity\Book
+            inversedBy: note
             joinColumn:
                 name: book_id
                 referencedColumnName: id

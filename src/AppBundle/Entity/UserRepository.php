@@ -10,4 +10,39 @@ namespace AppBundle\Entity;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function userRole($id, $role)
+    {
+        $qb = $this->createQueryBuilder('u');
+
+        $qb->select('u')
+            ->where('u.id = :user')
+            ->andWhere('u.role LIKE :roles')
+            ->setParameter('user', $id)
+            ->setParameter('roles', '%"'. $role . '"%');
+
+        $user = $qb->getQuery()->getResult();
+
+        if(count($user) >= 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function getRole()
+    {
+        $qb = $this->createQueryBuilder('u');
+
+        $qb->select('u.role')
+            ->where('u.role' == "ROLE_ADMIN");
+
+        $user = $qb->getQuery()->getResult();
+
+//        if($user == "ROLE_ADMIN") {
+//            return true;
+//        } else {
+//            return false;
+//        }
+        return $user;
+    }
 }

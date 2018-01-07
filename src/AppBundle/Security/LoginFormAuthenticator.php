@@ -89,7 +89,15 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 //        if ($password == 'user') {
 //            return true;
 //        }
-        return true;
+        if ($this->passwordEncoder->isPasswordValid($user, $password)) {
+            return true;
+        } else {
+            return false;
+        }
+//        if ($this->container->get('security.token_storage')->getToken()->getUser()->getPlainPassword() == $password) {
+//            return true;
+//        }
+//        return true;
 //        $dbPassword = $this->em->getRepository('AppBundle:User')->findOneBy(['plainPassword' => $password]);
 //
 //        if ($password == $dbPassword) {

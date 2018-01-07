@@ -61,7 +61,13 @@
             {% if is_granted('ROLE_ADMIN') %}
             <a href="{{ path('user_list') }}">Users List</a>
             {% endif %}
+            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_USER') %}
+            <a href="{{ path('change_pw') }}">Change password</a>
+            {% endif %}
             {#<a href="{{ path('files_list') }}">Files List</a>#}
+            {{ render(controller(
+                'AppBundle:Default:searchBar'
+            )) }}
         </div>
 
         {#<div>#}

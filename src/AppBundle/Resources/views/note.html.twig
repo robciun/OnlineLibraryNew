@@ -1,29 +1,59 @@
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Note</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    Note:<br>
-                    <input type="text" name="note" value="Mickey"><br>
-                    <input type="submit" value="Submit">
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+{#<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">#}
+    {#<div class="modal-dialog" role="document">#}
+        {#<div class="modal-content">#}
+            {#<div class="modal-header">#}
+                {#<h5 class="modal-title" id="exampleModalLabel">Note</h5>#}
+                {#<button type="button" class="close" data-dismiss="modal" aria-label="Close">#}
+                    {#<span aria-hidden="true">&times;</span>#}
+                {#</button>#}
+            {#</div>#}
+            {#<div class="modal-body">#}
+                {#<form>#}
+                    {#Note:<br>#}
+                    {#<input type="text" name="note" value="Mickey"><br>#}
+                    {#<input type="submit" value="Submit">#}
+                {#</form>#}
+            {#</div>#}
+            {#<div class="modal-footer">#}
+                {#<button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>#}
                 {#<button type="button" class="btn btn-primary">Save changes</button>#}
-            </div>
-        </div>
-    </div>
-</div>
-{% block javascripts %}
-    var notesUrl = '{{ path('book_notes', {'name': book.name}) }}';
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
+{#</div>#}
+{#{% block javascripts %}#}
+    {#var notesUrl = '{{ path('book_notes', {'name': book.name}) }}';#}
+
     {#<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>#}
     {#<script src="{{ asset('bundles/sideclickbootstrapmodal/js/sideclick-bootstrap-modal.js') }}"></script>#}
     {#<script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>#}
-{% endblock %}
+{#{% endblock %}#}
+{% extends 'base.html.twig' %}
+
+{% block title %}New Note {% endblock %}
+{% block body %}
+
+    <h1 class="page-header text-center">
+        Note
+    </h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <div class="fixed-wrapper">
+                    <input type="submit" class="btn btn-block btn-primary" value="Save" />
+                </div>
+                {#<div style="text-align: center">#}
+                    {#<a href="{{ path('book_show', {'entityId': id}) }}">Cancel</a>#}
+                {#</div>#}
+
+                {#{{ form_row(form.upload_book) }}#}
+                {{ form_end(form) }}
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+{% endblock body %}
