@@ -43,15 +43,11 @@
         const dropzone_default = new Dropzone(".dropzone", {
             url: '{{ path('fileuploadhandler') }}' ,
             maxFiles: 1,
-            dictMaxFilesExceeded: 'Only 1 Image can be uploaded',
-            acceptedFiles: 'image/*, application/*',
-            maxFilesize: 30,  // in Mb
+            dictMaxFilesExceeded: 'Only 1 file can be uploaded',
+            acceptedFiles: 'application/*',
+            maxFilesize: 30,
             addRemoveLinks: true,
             init: function () {
-
-//                var mockFile = { name: "5784b1ccf62c61f22f310c44dafdda90.jpeg", size: 12345, type: 'image/jpeg' };
-//                this.addFile.call(this, mockFile);
-//                this.options.thumbnail.call(this, mockFile, "http://http://localhost:8080/symfonyNew/web/app_dev.php/new/5784b1ccf62c61f22f310c44dafdda90.jpeg");
 
                 this.on("maxfilesexceeded", function(file) {
                     this.removeFile(file);
@@ -66,18 +62,8 @@
                 $('#fileName').val(response.fileName);
                 $('#linked_ID').val(response.mediaEntityId);
 
-//                var mockFile = { name: "Filename", size: 30 };
-//                Dropzone.emit("addedfile", mockFile);
-//                Dropzone.emit("thumbnail", mockFile, "/image/url");
-//                Dropzone.createThumbnailFromUrl(file, imageUrl, callback, crossOrigin);
-//                Dropzone.emit("complete", mockFile);
-//                var existingFileCount = 1;
-//                Dropzone.options.maxFiles = Dropzone.options.maxFiles - existingFileCount;
-
             }
         });
-
-
 
     </script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>

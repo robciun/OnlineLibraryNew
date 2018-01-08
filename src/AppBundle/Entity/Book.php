@@ -593,4 +593,10 @@ class Book
     {
         return $this->note;
     }
+    /**
+     * @var string
+     */
+    private $isbn;
+
+
 }

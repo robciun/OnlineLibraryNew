@@ -138,6 +138,10 @@ class BookController extends Controller
 
         $form = $this->createForm(BookType::class, $book);
 
+        if ($this->container->get('security.token_storage')->getToken()->getUser()->getRole() == "ROLE_ADMIN") {
+            $form->add('rating', RatingType::class);
+        }
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

@@ -50,6 +50,6 @@ class BookRepository extends EntityRepository
                 ->setParameter('filter', '%'.$filter.'%');
         }
 
-        return $qb;
+        return $qb->getQuery()->getResult();
     }
 }

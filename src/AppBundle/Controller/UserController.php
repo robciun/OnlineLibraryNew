@@ -135,20 +135,20 @@ class UserController extends Controller
      */
     public function changePasswordAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-        $changePassword = new ChangePassword();
-        $form = $this->createForm(ChangePasswordType::class, $changePassword);
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-//            $em->persist($changePassword);
-            return $this->redirectToRoute('user_login');
-        }
-
+//        $em = $this->getDoctrine()->getManager();
+//        $changePassword = new ChangePassword();
+//        $form = $this->createForm(ChangePassword::class, $changePassword);
+//
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//
+////            $em->persist($changePassword);
+//            return $this->redirectToRoute('user_login');
+//        }
+//
         return $this->render('@App/change_pw.html.twig', [
-            'form' => $form->createView(),
+//            'form' => $form->createView(),
         ]);
     }
 }

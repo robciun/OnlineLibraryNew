@@ -97,7 +97,7 @@ class DefaultController extends Controller
 //        $searchForm->handleRequest($request);
 //        $search = $searchForm->getData();
 
-        $searchManager = $this->container->get('fos_elastica.manager');
+//        $searchManager = $this->container->get('fos_elastica.manager');
 //        $results = $em->getRepository('AppBundle:Search')->search($search);
 
 //        $adapter = new ArrayAdapter($results);
@@ -106,7 +106,7 @@ class DefaultController extends Controller
 //        $pager->setCurrentPage($page);
 
 
-        $filter = $request->query->get('filter');
+        $filter = $request->request->get('filter');
 
         $qb = $em->getRepository('AppBundle:Book')->findAllQueryBuilder($filter);
 
@@ -294,10 +294,14 @@ class DefaultController extends Controller
     public function handleSearchBar(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $result = $em->getRepository('AppBundle:Book')->findAllQueryBuilder();
+//       var_dump($request);
+        $filter = $request->get('form')['search'];
+
+        $result = $em->getRepository('AppBundle:Book')->findAllQueryBuilder($filter);
 
         return $this->render('@App/all_books_list.html.twig', [
-            'searchResult' => $result
+            'searchResult' => $result,
+            'book_list' => $result
         ]);
 //        return new JsonResponse($result);
 //        var_dump($request->request);

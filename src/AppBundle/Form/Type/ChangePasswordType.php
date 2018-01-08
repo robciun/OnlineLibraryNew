@@ -8,8 +8,6 @@
 
 namespace AppBundle\Form\Type;
 
-
-use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -19,12 +17,12 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class ChangePasswordType extends AbstractType
 {
 
-    protected $em;
-
-    public function __construct(EntityManager $em)
-    {
-        $this->em = $em;
-    }
+//    protected $em;
+//
+//    public function __construct(EntityManager $em)
+//    {
+//        $this->em = $em;
+//    }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -41,7 +39,8 @@ class ChangePasswordType extends AbstractType
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-           'data_class' => 'AppBundle\Entity\ChangePassword'
+//           'data_class' => 'AppBundle\Entity\ChangePassword'
+           'data_class' => ''
         ]);
     }
 

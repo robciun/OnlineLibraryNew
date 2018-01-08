@@ -53,51 +53,15 @@ class BookType extends AbstractType
 
         $builder->add('description', TextareaType::class);
 
+        $builder->add('iSBN', TextType::class);
+
 
 //        if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
 //            $builder->add('rating', RatingType::class);
 //        }
-
-//        $builder->add('name', null, array(
-//            'required'   => false,
-//            'empty_data' => 'John Doe',
-//        ));
-
-//        $user = $this->em->getRepository('AppBundle:User')->find('userId');
-//        $user->getEmail();
-
-//        $builder
-//            ->add('user', ChoiceType::class, array(
-//                'choices' => array('Email' => $user)));
-//        $builder->add('user', TextType::class);
-
-//        $user2 =
-//        $user = $this->em->getRepository('AppBundle:User')->
-        //$user = $this->get('se')
-
-//        $builder->add('user', EntityType::class, [
-//            'class' => 'AppBundle\Entity\User',
-//            'attr' => [
-//                'user' => 'labas',
-//            ],
-//        'placeholder' => '',
-//        ]);
-
-//        $builder->add('upload_book', FileType::class, array('label' => 'Book (PDF file)'));
-
-//        $builder->add('comments_count', NumberType::class);
 //
 //        $builder->add('rating', NumberType::class);
-//
-//        $builder->add('readers_count', NumberType::class);
-//
-//        $builder->add('last_read_page', NumberType::class);
 
-//        $builder->add('save', SubmitType::class);
-
-        //$builder->add('genre', TextType::class);
-
-        //$builder->add('book_type', NumberType::class);
     }
 
     public function getName()

@@ -24,12 +24,12 @@
         {#</div>#}
     {#</div>#}
 
-    <div style="text-align: right" id="search">
-        <form>
-            <input name="q" type="search">
-            <input type="submit" value="Find">
-        </form>
-    </div>
+    {#<div style="text-align: right" id="search">#}
+        {#<form>#}
+            {#<input name="q" type="search">#}
+            {#<input type="submit" value="Find">#}
+        {#</form>#}
+    {#</div>#}
     {#{% for books in book %}#}
     {#{% block stylesheets %}#}
         {#<link href="{{ asset(asset('https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css')) }}" type="text/css" rel="stylesheet" />#}
@@ -86,9 +86,9 @@
         <th>{{'Publisher'|trans({}, 'fields')}}</th>
         <th>{{'Genre'|trans({}, 'fields')}}</th>
         <th>{{'Language'|trans({}, 'fields')}}</th>
+        <th>{{'ISBN'|trans({}, 'fields')}}</th>
         <th>{{'Pages number'|trans({}, 'fields')}}</th>
         <th>{{'Description'|trans({}, 'fields')}}</th>
-        <th>{{'Comments count'|trans({}, 'fields')}}</th>
         <th>{{'Rating'|trans({}, 'fields')}}</th>
         {% if is_granted('ROLE_ADMIN') %}
         <th>{{'Date created'|trans({}, 'fields')}}</th>
@@ -96,7 +96,6 @@
         {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
             <th>{{'Book name'|trans({}, 'fields')}}</th>
         {% endif %}
-        <th>{{'ISBN'|trans({}, 'fields')}}</th>
         {#<th>{{'Readers count'|trans({}, 'fields')}}</th>#}
         {#<th>{{'Last read page'|trans({}, 'fields')}}</th>#}
         <th>
@@ -122,12 +121,9 @@
             <td>{{ book.publisher }}</td>
             <td>{{ book.genre }}</td>
             <td>{{ book.language }}</td>
+            <td>{{ book.iSBN }}</td>
             <td>{{ book.pagesNumber }}</td>
             <td>{{ book.description }}</td>
-            <td><a href="{{ path('note_new') }}"
-                   class="terms_button"
-                   data-toggle="modal"
-                   data-target="#exampleModal">{{ book.commentsCount }}</a></td>
             {#<td><a href="{{ path('rating') }}">{{ book.rating }}</a></td>#}
             <td>{{ book.rating }}</td>
             {% if is_granted('ROLE_ADMIN') %}
@@ -136,7 +132,6 @@
             {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
                 <td><a href="{{ path('files_list', {'id': book.id}) }}">{{ book.bookName }}</a></td>
             {% endif %}
-            <td>{{ book.iSBN }}</td>
             {#<td>{{ book.readersCount }}</td>#}
             {#<td>{{ book.lastReadPage }}</td>#}
             <td>
