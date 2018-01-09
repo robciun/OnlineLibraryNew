@@ -16,6 +16,9 @@ AppBundle\Entity\Note:
         created:
             type: datetime
             nullable: true
+        user_email:
+            type: string
+            nullable: true
     lifecycleCallbacks: {  }
     manyToOne:
         book:

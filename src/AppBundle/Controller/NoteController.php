@@ -40,6 +40,7 @@ class NoteController extends Controller
 //            ->add('note', TextType::class)
 //            ->add('save', SubmitType::class, array('label' => 'Add Note'))
 //            ->getForm();
+            $note->setUserEmail($this->container->get('security.token_storage')->getToken()->getUser()->getEmail());
             $note->setUsername($this->container->get('security.token_storage')->getToken()->getUser()->getName());
 //            $note->setUsername('atona');
             $note->setCreated(new \DateTime('now'));
@@ -48,11 +49,67 @@ class NoteController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($note);
             $em->flush();
+            return $this->redirectToRoute('book_list');
 //            return $this->redirectToRoute('book_list');
         }
 
         return $this->render('@App/note.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/editNote/{id}", name="note_edit")
+     * @param Request $request
+     * @param $id
+     * @return Response
+     */
+    public function editAction(Request $request, $id)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $note = $em->find(Note::class, $id);
+
+        $form = $this->createForm(NoteType::class, $note);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em->persist($note);
+            $em->flush();
+
+            return $this->redirectToRoute('book_list');
+        }
+
+        return $this->render('@App/note.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/deleteNote/{entityId}", name="note_delete")
+     * @param Request $request
+     * @param $entityId
+     * @return Response
+     */
+    public function deleteAction(Request $request, $entityId)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $note = $em->find('AppBundle:Note', $entityId);
+
+        if ($note->getUserEmail() != $this->getUser()->getEmail() && $this->getUser()->getRole() != 'ROLE_ADMIN') {
+            throw $this->createAccessDeniedException(
+                'It is not your note!'
+            );
+        }
+
+        if ($note) {
+            $em->remove($note);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('book_list');
     }
 }

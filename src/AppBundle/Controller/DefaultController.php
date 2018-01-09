@@ -61,7 +61,10 @@ class DefaultController extends Controller
         if ($note) {
             $note->getNote();
         }
-        $notesList = $em->getRepository('AppBundle:Note')->findBy(['id' => $note]);
+//        $notesList = $em->getRepository('AppBundle:Note')->findBy(['id' => $note]);
+//        $notesList = $em->getRepository('AppBundle:Note')->getValuesList($entityId);
+        $notesList = $em->getRepository('AppBundle:Note')->findAll();
+        //$notesList = $this->em->getRepository('AppBundle:Note')->getValuesList($entityId);
 
         return $this->render('@App/books_list.html.twig', [
             'book_list' => $bookList,

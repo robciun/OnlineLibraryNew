@@ -46,7 +46,7 @@ class BookRepository extends EntityRepository
         $qb = $this->createQueryBuilder('book');
 
         if ($filter) {
-            $qb->andWhere('book.title LIKE :filter OR book.author LIKE :filter')
+            $qb->andWhere('book.title LIKE :filter OR book.author LIKE :filter OR book.publisher LIKE :filter OR book.genre LIKE :filter OR book.language LIKE :filter OR book.pages_number LIKE :filter OR book.rating LIKE :filter OR book.ISBN LIKE :filter')
                 ->setParameter('filter', '%'.$filter.'%');
         }
 

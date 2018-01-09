@@ -164,4 +164,33 @@ class Note
     {
         return $this->created;
     }
+    /**
+     * @var string
+     */
+    private $user_email;
+
+
+    /**
+     * Set userEmail
+     *
+     * @param string $userEmail
+     *
+     * @return Note
+     */
+    public function setUserEmail($userEmail)
+    {
+        $this->user_email = $userEmail;
+
+        return $this;
+    }
+
+    /**
+     * Get userEmail
+     *
+     * @return string
+     */
+    public function getUserEmail()
+    {
+        return $this->user_email;
+    }
 }

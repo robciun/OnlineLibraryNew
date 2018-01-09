@@ -13,11 +13,21 @@ class NoteRepository extends EntityRepository
 {
     public function getValuesList($noteId)
     {
-        return $this->createQueryBuilder('n')
+        $qb = $this->createQueryBuilder('n');
+
+        $qb->select('b')
             ->join('n.book', 'b')
-            ->where('b.id = :id')->setParameter('id', $noteId)
-            ->orderBy('b.id', 'asc')
-            ->getQuery()
-            ->getArrayResult();
+            ->where('b.id =:id')
+            ->setParameter('id', $noteId);
+
+        $items = $qb->getQuery()->getArrayResult();
+
+        return $items;
+        //        return $this->createQueryBuilder('n')
+//            ->join('n.book', 'b')
+//            ->where('b.id = :id')->setParameter('id', $noteId)
+//            ->orderBy('b.id', 'asc')
+//            ->getQuery()
+//            ->getArrayResult();
     }
 }
