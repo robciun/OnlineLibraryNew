@@ -28,7 +28,6 @@ class NoteController extends Controller
     public function newAction(Request $request)
     {
         $note = new Note();
-//        $note->setNote('Enter your note');
 
         $form = $this->createForm(NoteType::class, $note);
 
@@ -36,21 +35,15 @@ class NoteController extends Controller
 
         if ($form->isValid() && $form->isSubmitted()) {
 
-//        $form = $this->createFormBuilder($note)
-//            ->add('note', TextType::class)
-//            ->add('save', SubmitType::class, array('label' => 'Add Note'))
-//            ->getForm();
             $note->setUserEmail($this->container->get('security.token_storage')->getToken()->getUser()->getEmail());
             $note->setUsername($this->container->get('security.token_storage')->getToken()->getUser()->getName());
-//            $note->setUsername('atona');
             $note->setCreated(new \DateTime('now'));
 
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($note);
             $em->flush();
-            return $this->redirectToRoute('book_list');
-//            return $this->redirectToRoute('book_list');
+            return $this->redirectToRoute('note_list');
         }
 
         return $this->render('@App/note.html.twig', [
@@ -80,7 +73,7 @@ class NoteController extends Controller
             $em->persist($note);
             $em->flush();
 
-            return $this->redirectToRoute('book_list');
+            return $this->redirectToRoute('note_list');
         }
 
         return $this->render('@App/note.html.twig', [
@@ -110,6 +103,50 @@ class NoteController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('book_list');
+        return $this->redirectToRoute('note_list');
     }
+
+    /**
+     * @Route("/noteList", name="note_list")
+     * @param Request $request
+     * @return Response
+     */
+    public function noteList(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $noteList = $em->getRepository('AppBundle:Note')->findAll();
+
+        return $this->render('@App/comments.html.twig', [
+            'note_list' => $noteList,
+        ]);
+    }
+
+//    public function searchNotesAction()
+//    {
+//        $form = $this->createFormBuilder(null)
+//            ->add('search', TextType::class)
+//            ->getForm();
+//
+//        return $this->render('@App/search_note_bar.html.twig', [
+//            'form' => $form->createView()
+//        ]);
+//    }
+//
+//    /**
+//     * @Route("/searchNoteBar", name="search_note_bar")
+//     * @param Request $request
+//     * @return Response
+//     */
+//    public function handleNotesSearchBar(Request $request)
+//    {
+//        $em = $this->getDoctrine()->getManager();
+//        $filter = $request->get('form')['search'];
+//
+//        $result = $em->getRepository('AppBundle:Note')->findAllNotes($filter);
+//
+//        return $this->render('@App/comments.html.twig', [
+//            'searchResult' => $result,
+//            'book_list' => $result
+//        ]);
+//    }
 }

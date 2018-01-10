@@ -17,20 +17,6 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends Controller
 {
-//    /**
-//     * @Route("/login", name="user_login")
-//     */
-//    public function loginAction(Request $request, AuthenticationUtils $authUtils)
-//    {
-//        $error = $authUtils->getLastAuthenticationError();
-//
-//        $lastUsername = $authUtils->getLastUsername();
-//
-//        return $this->render('@App/login.html.twig', array(
-//            'last_username' => $lastUsername,
-//            'error'         => $error,
-//        ));
-//    }
 
     /**
      * @Route("/login", name="user_login")
@@ -38,9 +24,7 @@ class SecurityController extends Controller
     public function loginAction(Request $request)
     {
         $authenticationUtils = $this->get('security.authentication_utils');
-        // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
         $form = $this->createForm(LoginType::class, [
@@ -50,7 +34,6 @@ class SecurityController extends Controller
         return $this->render(
             '@App/login.html.twig',
             array(
-                // last username entered by the user
                 'form' => $form->createView(),
                 'error' => $error
             )
@@ -62,7 +45,6 @@ class SecurityController extends Controller
      */
     public function logoutAction()
     {
-        //return $this->redirectToRoute('user_login');
         throw new \Exception('this should not be reached!');
     }
 }

@@ -23,11 +23,17 @@ class NoteRepository extends EntityRepository
         $items = $qb->getQuery()->getArrayResult();
 
         return $items;
-        //        return $this->createQueryBuilder('n')
-//            ->join('n.book', 'b')
-//            ->where('b.id = :id')->setParameter('id', $noteId)
-//            ->orderBy('b.id', 'asc')
-//            ->getQuery()
-//            ->getArrayResult();
+    }
+
+    public function findAllNotes($filter = '')
+    {
+        $qb = $this->createQueryBuilder('note');
+
+        if ($filter) {
+            $qb->andWhere('note.username LIKE :filter OR note.note LIKE :filter')
+                ->setParameter('filter', '%'.$filter.'%');
+        }
+
+        return $qb->getQuery()->getResult();
     }
 }

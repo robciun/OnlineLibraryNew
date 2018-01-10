@@ -21,32 +21,12 @@ class BookRepository extends EntityRepository
             ->getQuery()->getArrayResult();
     }
 
-    public function sortBooksByTitleAsc()
-    {
-        $qb = $this->createQueryBuilder('b');
-
-        $qb->select('b')
-            ->orderBy('b.title', 'ASC');
-    }
-
-    public function sortBooksByTitleDesc()
-    {
-        $qb = $this->createQueryBuilder('b');
-
-        $qb->select('b')
-            ->orderBy('b.title', 'DESC');
-
-        $items = $qb->getQuery()->getArrayResult();
-
-        return $items;
-    }
-
     public function findAllQueryBuilder($filter = '')
     {
         $qb = $this->createQueryBuilder('book');
 
         if ($filter) {
-            $qb->andWhere('book.title LIKE :filter OR book.author LIKE :filter OR book.publisher LIKE :filter OR book.genre LIKE :filter OR book.language LIKE :filter OR book.pages_number LIKE :filter OR book.rating LIKE :filter OR book.ISBN LIKE :filter')
+            $qb->andWhere('book.title LIKE :filter OR book.author LIKE :filter OR book.publisher LIKE :filter OR book.genre LIKE :filter OR book.language LIKE :filter OR book.pages_number LIKE :filter OR book.rating LIKE :filter OR book.isbn LIKE :filter')
                 ->setParameter('filter', '%'.$filter.'%');
         }
 

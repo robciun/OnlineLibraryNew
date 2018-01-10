@@ -36,9 +36,6 @@ class UserController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-//            $request->getSession()->getFlashBag()
-//                ->add('success', 'Welcome to the Death Star, have a magical day!');
-//            $flash = $this->addFlash('success', 'Welcome '.$user->getUsername());
             $user->setDateRegistered(new \DateTime('now'));
             return $this->get('security.authentication.guard_handler')
                 ->authenticateUserAndHandleSuccess(
@@ -47,16 +44,6 @@ class UserController extends Controller
                     $this->get('app.security.login_form_authenticator'),
                     'main'
                 );
-
-//            return $this->redirectToRoute('home', [
-//                //'flash' => $flash
-//            ]);
-//            return $this->get('security.authentication.guard_handler')
-//                ->authenticateUserAndHandleSuccess(
-//                    $user,
-//                    $request,
-//                    $this->get('app.security.login_form_authenticator'),
-//                    'main');
         }
 
         return $this->render('@App/register.html.twig', [
@@ -72,7 +59,8 @@ class UserController extends Controller
     public function userList()
     {
         $em = $this->getDoctrine()->getManager();
-        $usersList = $em->getRepository('AppBundle:User')->findAll();
+//        $usersList = $em->getRepository('AppBundle:User')->findAll();
+        $usersList = $em->getRepository('AppBundle:User')->listExceptAdmin();
 
         return $this->render('@App/all_users_list.html.twig', [
             'user_list' => $usersList,
@@ -101,7 +89,7 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute('user_list');
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('@App/user_edit.html.twig', [
@@ -128,27 +116,4 @@ class UserController extends Controller
         return $this->redirectToRoute('user_list');
     }
 
-    /**
-     * @Route("/changePassword", name="change_pw")
-     * @param Request $request
-     * @return Response
-     */
-    public function changePasswordAction(Request $request)
-    {
-//        $em = $this->getDoctrine()->getManager();
-//        $changePassword = new ChangePassword();
-//        $form = $this->createForm(ChangePassword::class, $changePassword);
-//
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()) {
-//
-////            $em->persist($changePassword);
-//            return $this->redirectToRoute('user_login');
-//        }
-//
-        return $this->render('@App/change_pw.html.twig', [
-//            'form' => $form->createView(),
-        ]);
-    }
 }

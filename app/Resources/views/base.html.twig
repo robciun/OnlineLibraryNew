@@ -23,17 +23,12 @@
                 {% endfor %}
             </div>
         {% endif %}
-        {#<div class="search-bar">#}
-            {#<form method="GET" action="" class="js-sea-search sea-search">#}
-                {#<input type="search" name="q" placeholder="Search Books" autocomplete="off" class="search-input">#}
-            {#</form>#}
-        {#</div>#}
         <header class="header">
             <img class="logo-icon" src="{{ asset('images/lib.png') }}">
             <h1 class="logo">Online Library</h1>
             <ul class="navi">
                 <div style="margin-right: 10px">
-                    <li>Welcome {{ app.user ? app.user.username : 'Guest'  }}!</li>
+                    <li>Welcome {{ app.user ? app.user.name : 'Guest'  }}!</li>
                 </div>
                 {#<li class="search"><a href="#" class="js-header-search-toggle"><i class="fa fa-search"></i></a></li>#}
                 {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
@@ -61,13 +56,19 @@
             {% if is_granted('ROLE_ADMIN') %}
             <a href="{{ path('user_list') }}">Users List</a>
             {% endif %}
+            {#{% if is_granted('ROLE_ADMIN') or is_granted('ROLE_USER') %}#}
+            {#<a href="{{ path('change_pw') }}">Change password</a>#}
+            {#{% endif %}#}
             {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_USER') %}
-            <a href="{{ path('change_pw') }}">Change password</a>
+            <a href="{{ path('note_list') }}">Notes List</a>
+            {% endif %}
+            {% if is_granted('ROLE_USER') %}
+            <a href="{{ path('user_edit', {'id': app.user.id}) }}">Edit profile</a>
             {% endif %}
             {#<a href="{{ path('files_list') }}">Files List</a>#}
-            {{ render(controller(
-                'AppBundle:Default:searchBar'
-            )) }}
+            {#{{ render(controller(#}
+                {#'AppBundle:Default:searchBar'#}
+            {#)) }}#}
         </div>
 
         {#<div>#}
@@ -79,7 +80,7 @@
         </div>
 
         <div class="footer">
-            <p class="footer-text">robciun@gmail.com</p>
+            <p class="footer-text">&copy; 2018 OnlineLibrary</p>
         </div>
 
         {% block javascripts %}

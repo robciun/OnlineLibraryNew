@@ -526,35 +526,6 @@ class Book
         return $this->book_name;
     }
     /**
-     * @var string
-     */
-    private $ISBN;
-
-
-    /**
-     * Set iSBN
-     *
-     * @param string $iSBN
-     *
-     * @return Book
-     */
-    public function setISBN($iSBN)
-    {
-        $this->ISBN = $iSBN;
-
-        return $this;
-    }
-
-    /**
-     * Get iSBN
-     *
-     * @return string
-     */
-    public function getISBN()
-    {
-        return $this->ISBN;
-    }
-    /**
      * @var \Doctrine\Common\Collections\Collection
      */
     private $note;
@@ -599,4 +570,28 @@ class Book
     private $isbn;
 
 
+
+    /**
+     * Set isbn
+     *
+     * @param string $isbn
+     *
+     * @return Book
+     */
+    public function setIsbn($isbn)
+    {
+        $this->isbn = $isbn;
+
+        return $this;
+    }
+
+    /**
+     * Get isbn
+     *
+     * @return string
+     */
+    public function getIsbn()
+    {
+        return $this->isbn;
+    }
 }

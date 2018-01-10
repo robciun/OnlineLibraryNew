@@ -3,8 +3,9 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-                <h1>Register!</h1>
+            <div class="col-xs-3"></div>
+            <div class="col-xs-6">
+                <h1 style="text-align: center">Register!</h1>
                     {{ form_start(form) }}
                         {{ form_row(form.username) }}
                         {{ form_row(form.email) }}
@@ -16,13 +17,6 @@
                         {{ form_row(form.plainPassword.second, {
                             'label': 'Repeat Password'
                         }) }}
-                {#{% block form_label %}#}
-                    {#{% spaceless %}#}
-                        {#<label><a href=""</label>#}
-
-                {#{{ form_row(form.terms, {#}
-                    {#'label' : "I accept copyright" <a href="{{ path('terms') }}">"terms and conditions"</a>#}
-                {#}) }}#}
                 <span style="display:inline-block">
                     {{ form_row(form.terms) }}
                 </span>
@@ -30,31 +24,23 @@
                     <button type="button" class="btn btn-primary terms_button" data-toggle="modal" data-target="#exampleModal" style="padding: 0; border: none; background: none; color: blue">
                         terms and conditions
                     </button>
-                    {#<a href="{{ path('terms') }}" #}{#role="button" class="btn btn-large btn-primary" data-toggle="modal"#}{# data-sideclick-modal-trigger>terms and conditions</a>#}
-                    {#<a href="{{ path('terms') }}"#}
-                       {#class="terms_button"#}
-                       {#data-callback="reloadTab"#}
-                       {#data-toggle="modal"#}
-                       {#data-target="#exampleModal"#}
-                       {#data-sideclick-modal-trigger>terms and conditions</a>#}
-                    {#data-sideclick-modal-trigger#}
-                    {#onclick="return confirm('In order to publish your article we need your agreement. Please take a moment to read the terms of this license. By submitting your article to one of our books or journals (henceforth ‘publications’), you and all co-authors of your submission agree to the terms of this license. You do not need to fill out a copyright form for confirmation. By submitting your article to one of our publications you grant us (the publisher) the exclusive right to both reproduce and/or distribute your article (including the abstract) throughout the world in electronic, printed or any other medium, and to authorize others (including Reproduction Rights Organizations such as the Copyright Licensing Agency and the Copyright Clearance Center, and other document distributors) to do the same. You agree that we may publish your article, and that we may sell or distribute it, on its own, or with other related material.')"#}
                 </span>
                 <br>
                 {#formnovalidate#}
-                <button type="submit" class="btn btn-primary" formnovalidate>Register</button>
+                <div class="row">
+                    <div class="col-xs-4"></div>
+                    <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary" formnovalidate>Register</button>
+                    </div>
+                    <div class="col-xs-4"></div>
+                </div>
                 {{ form_end(form) }}
 
-                    {#{{ flash }}#}
-
             </div>
+            <div class="col-xs-3"></div>
         </div>
     </div>
 
-
-
-
-    <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -89,36 +75,21 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
-                    {#<button type="button" class="btn btn-primary">Save changes</button>#}
                 </div>
             </div>
         </div>
     </div>
 
-    {#<div class="modal fade" id="emptyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-async data-target="#emptyModal">#}
-        {#<div class="modal-dialog">#}
-        {#</div>#}
-    {#</div>#}
-
 {% endblock %}
 {% block javascripts %}
-    {#{{ parent() }}#}
     <script type="text/javascript">
 
-//        $(document).ready(function(){
         $(document).on("click", ".terms_button", function(e){
-
-//            $(".btn").click(function(){
-
                 $("#exampleModal").modal('show');
-
-//            });
-
         });
 
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    {#<script src="{{ asset('bundles/sideclickbootstrapmodal/js/sideclick-bootstrap-modal.js') }}"></script>#}
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 
 {% endblock %}

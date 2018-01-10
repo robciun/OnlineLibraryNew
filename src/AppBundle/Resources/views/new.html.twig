@@ -26,7 +26,6 @@
                     <a href="{{ path('book_list') }}">Cancel</a>
                 </div>
 
-                {#{{ form_row(form.upload_book) }}#}
             {{ form_end(form) }}
             </div>
             <div class="col-sm-4"></div>
@@ -44,7 +43,7 @@
             url: '{{ path('fileuploadhandler') }}' ,
             maxFiles: 1,
             dictMaxFilesExceeded: 'Only 1 file can be uploaded',
-            acceptedFiles: 'application/*',
+            acceptedFiles: 'application/pdf',
             maxFilesize: 30,
             addRemoveLinks: true,
             init: function () {

@@ -55,9 +55,10 @@ AppBundle\Entity\Book:
             type: string
             nullable: false
             lenght: 510
-        ISBN:
+        isbn:
             type: string
             lenght: 13
+            nullable: true
     lifecycleCallbacks: {  }
     oneToMany:
         note:

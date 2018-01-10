@@ -45,4 +45,17 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
 //        }
         return $user;
     }
+
+    public function listExceptAdmin()
+    {
+        $qb = $this->createQueryBuilder('u');
+
+        $qb->select('u')
+            ->where('u.id != 2');
+
+        $items = $qb->getQuery()->getResult();
+
+        return $items;
+//        $qb->createQuery("SELECT c FROM Category c WHERE c.id != 0")->getResult();
+    }
 }

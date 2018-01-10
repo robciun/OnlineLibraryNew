@@ -27,21 +27,6 @@ class DefaultController extends Controller
 {
     use \Sideclick\BootstrapModalBundle\Controller\ControllerTrait;
 
-    public function thisActionWillRedirect(Request $request)
-    {
-        return $this->redirectWithAjaxSupport($request, '/new/url');
-    }
-
-//    public function thisActionWillReload(Request $request)
-//    {
-//        return $this->reloadWithAjaxSupport($request);
-//    }
-
-    public function thisActionWillReload(Request $request)
-    {
-        return $this->redirectToRouteWithAjaxSupport($request,'terms',['parameters'=>$parameters]);
-    }
-
     /**
      * @Route("/shower/{entityId}", name="book_show")
      * @param Request $request
@@ -52,24 +37,11 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $book = $em->find('AppBundle:Book', $entityId);
-        $bookList = $em->getRepository('AppBundle:Book')->findBy(['id' => $book]); //book by id
-        //$bookList = $em->getRepository('AppBundle:Book')->findAll(); //all books
-
-//        $note = $em->getRepository('AppBundle:Note')->getValuesList($entityId);
-
-        $note = $em->find('AppBundle:Note', $entityId);
-        if ($note) {
-            $note->getNote();
-        }
-//        $notesList = $em->getRepository('AppBundle:Note')->findBy(['id' => $note]);
-//        $notesList = $em->getRepository('AppBundle:Note')->getValuesList($entityId);
-        $notesList = $em->getRepository('AppBundle:Note')->findAll();
-        //$notesList = $this->em->getRepository('AppBundle:Note')->getValuesList($entityId);
+        $bookList = $em->getRepository('AppBundle:Book')->findBy(['id' => $book]);
 
         return $this->render('@App/books_list.html.twig', [
             'book_list' => $bookList,
             'entityId' => $entityId,
-            'book_notes' => $notesList,
         ]);
     }
 
@@ -82,39 +54,6 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $bookList = $em->getRepository('AppBundle:Book')->findAll();
-        $book = $em->getRepository('AppBundle:Book')->sortBooksByTitleAsc();
-
-        $search = new Search();
-
-//        $searchForm = $this->get('form.factory')
-//            ->createNamed(
-//                '',
-//                'search',
-//                $search,
-//                array(
-//                    'action' => $this->generateUrl('book_list'),
-//                    'method' => 'GET'
-//                )
-//            );
-//
-//        $searchForm->handleRequest($request);
-//        $search = $searchForm->getData();
-
-//        $searchManager = $this->container->get('fos_elastica.manager');
-//        $results = $em->getRepository('AppBundle:Search')->search($search);
-
-//        $adapter = new ArrayAdapter($results);
-//        $pager = new Pagerfanta($adapter);
-//        $pager->setMaxPerPage($search->getPerPage());
-//        $pager->setCurrentPage($page);
-
-
-        $filter = $request->request->get('filter');
-
-        $qb = $em->getRepository('AppBundle:Book')->findAllQueryBuilder($filter);
-
-//        $paginatedCollection = $this->get('fos_elastica.paginator.subscriber')
-//            ->createCollection($qb, $request, 'api_programmers_collection');
 
         $form = $this->createFormBuilder()
             ->add('search', TextType::class)
@@ -122,85 +61,8 @@ class DefaultController extends Controller
 
         return $this->render('@App/all_books_list.html.twig', [
             'book_list' => $bookList,
-            'bookAsc' => $book,
-//            'results' => $pager->getCurrentPageResults(),
-//            'results' => $results,
-//            'searchForm' => $searchForm->createView(),
-//            'pager' => $pager,
             'form' => $form->createView(),
-            'filter' => $qb
         ]);
-    }
-
-    /**
-     * @Route("/search/{id}", name="handleSearch")
-     * @param Request $request
-     * @param $id
-     * @return Response
-     */
-    public function handleSearch (Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $book = $em->find(Book::class, $id);
-
-
-        $em->persist($book);
-        $em->flush();
-
-            //return $this->redirectToRoute('book_list');
-
-//        var_dump($request->request);
-//        die();
-        return $this->render('base.html.twig', [
-            'book' => $book
-        ]);
-    }
-
-    /**
-     * @Route("/shower/{entityId}/notes", name="book_notes")
-     * @Method("GET")
-     * @param $entityId
-     */
-    public function getNotesAction($entityId)
-    {
-
-//        $em = $this->getDoctrine()->getManager();
-//        $bookNote = $em->getRepository('AppBundle:Book')
-//            ->findOneBy(['name' => $book]);
-
-//        $notes = [];
-//
-//        foreach ($bookNote->getNotes() as $note) {
-//            $notes[] = [
-//                'id' => $note->getId(),
-//                'username' => $note->getAuthor,
-//                'note' => $note->getNote(),
-//                'date' => $note->created()->format('M d, Y')
-//            ];
-//            dump($note);
-//        }
-
-        $notes = [
-
-            ['id' => 1, 'username' => 'AquaPelham', 'avatarUri' => '/images/leanna.jpeg', 'note' => 'Very interesting book', 'date' => 'Dec. 10, 2015'],
-            ['id' => 2, 'username' => 'AquaWeaver', 'avatarUri' => '/images/ryan.jpeg', 'note' => 'nice book', 'date' => 'Dec. 1, 2015'],
-            ['id' => 3, 'username' => 'AquaPelham', 'avatarUri' => '/images/leanna.jpeg', 'note' => 'Inked!', 'date' => 'Aug. 20, 2015'],
-        ];
-//        $em = $this->getDoctrine()->getManager();
-//        $note = $em->find('AppBundle:Note', $entityId);
-//        $note->getNote();
-//        $notesList = $em->getRepository('AppBundle:Note')->findBy(['id' => $note]);
-
-        $data = [
-            'notes' => $notes
-        ];
-
-        return new JsonResponse($data);
-//        return $this->render('@App/books_list.html.twig', [
-//            'book_notes' => $notesList,
-//            'entityId' => $entityId,
-//        ]);
     }
 
     /**
@@ -259,26 +121,6 @@ class DefaultController extends Controller
         return new BinaryFileResponse('C:\xampp\htdocs\symfonyNew\web\uploads' . DIRECTORY_SEPARATOR  . $fileData);
     }
 
-    /**
-     * @Route("/terms", name="terms")
-     * @param Request $request
-     * @return Response
-     */
-    public function getTerms()
-    {
-        return $this->render('@App/terms.html.twig');
-    }
-
-    /**
-     * @Route("/summer", name="summernote")
-     * @param Request $request
-     * @return Response
-     */
-    public function summerNote()
-    {
-        return $this->render('@App/summernote.html.twig');
-    }
-
     public function searchBarAction()
     {
         $form = $this->createFormBuilder(null)
@@ -297,7 +139,6 @@ class DefaultController extends Controller
     public function handleSearchBar(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-//       var_dump($request);
         $filter = $request->get('form')['search'];
 
         $result = $em->getRepository('AppBundle:Book')->findAllQueryBuilder($filter);
@@ -306,8 +147,5 @@ class DefaultController extends Controller
             'searchResult' => $result,
             'book_list' => $result
         ]);
-//        return new JsonResponse($result);
-//        var_dump($request->request);
-//        die();
     }
 }

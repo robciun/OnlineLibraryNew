@@ -37,13 +37,13 @@ class BookType extends AbstractType
 
         $builder->add('title', TextType::class);
 
-//        $builder->add('author', TextType::class);
-
         $builder->add('release_year', DateType::class, [
             'years' => range(date('Y') - 100, date('Y') + 1),
         ]);
 
-        $builder->add(  'publisher', TextType::class);
+        $builder->add(  'publisher', TextType::class, [
+            'required' => false
+        ]);
 
         $builder->add(  'genre', TextType::class);
 
@@ -53,14 +53,9 @@ class BookType extends AbstractType
 
         $builder->add('description', TextareaType::class);
 
-        $builder->add('iSBN', TextType::class);
-
-
-//        if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
-//            $builder->add('rating', RatingType::class);
-//        }
-//
-//        $builder->add('rating', NumberType::class);
+        $builder->add('isbn', TextType::class, [
+            'required' => false
+        ]);
 
     }
 
@@ -73,7 +68,6 @@ class BookType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => 'AppBundle\Entity\Book',
-            'translation_domain' => 'fields',
         ]);
     }
 }

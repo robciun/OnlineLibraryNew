@@ -31,24 +31,6 @@ class BookController extends Controller
 {
 
     /**
-     * @Route("/show/{entityId}", name="book_show")
-     * @param Request $request
-     * @param $entityId
-     * @return Response
-     */
-    public function showAction(Request $request, $entityId)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $book = $em->find('AppBundle:Book', $entityId);
-        $bookList = $em->getRepository('AppBundle:Book')->findBy(['id' => $book]);
-
-        return $this->render('@App/books_list.html.twig', [
-            'book_list' => $bookList,
-            'entityId' => $entityId
-        ]);
-    }
-
-    /**
      * @Route("/new", name="book_new")
      * @param Request $request
      * @return Response
@@ -67,20 +49,8 @@ class BookController extends Controller
         }
 
         $form->handleRequest($request);
-//
-//        if ($this->container->get('security.token_storage')->getToken()->getUser()->getRole() == "ROLE_ADMIN") {
-//            $form->add('rating', RatingType::class);
-//        }
 
         if ($form->isValid() && $form->isSubmitted()) {
-
-//            $file = $book->getUploadBook();
-//
-//            $fileName = md5(uniqid()).'.'.$file->guessExtension();
-//
-//            $file->move($this->getParameter('books_directory'));
-//
-//            $book->setUploadBook($fileName);
 
             $book->setUserEmail($this->container->get('security.token_storage')->getToken()->getUser()->getEmail());
             $book->setAuthor($this->container->get('security.token_storage')->getToken()->getUser()->getName());
@@ -136,6 +106,9 @@ class BookController extends Controller
 
         $book = $em->find(Book::class, $id);
 
+        $media = $em->getRepository('AppBundle:Media')->getLast();
+        $getResults = $media["file_name"];
+
         $form = $this->createForm(BookType::class, $book);
 
         if ($this->container->get('security.token_storage')->getToken()->getUser()->getRole() == "ROLE_ADMIN") {
@@ -145,7 +118,7 @@ class BookController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
+            $book->setBookName($getResults);
             $em->persist($book);
             $em->flush();
 
@@ -155,13 +128,6 @@ class BookController extends Controller
         return $this->render('@App/new.html.twig', [
             'form' => $form->createView(),
         ]);
-//        return $this->render('@App/all_books_list.html.twig', array(
-//            'form' => $form->createView(),
-//            'actionRoute' => 'book_edit',
-//            'recordId' => $id,
-//            'recordEntity' => 'book',
-//            'recordIsSaved' => $recordIsSaved
-//        ));
     }
 
     /**
@@ -187,20 +153,5 @@ class BookController extends Controller
         }
 
         return $this->redirectToRoute('book_list');
-    }
-
-    /**
-     * @Route("/sort", name="books_sort")
-     * @param Request $request
-     * @return Response
-     */
-    public function sortBooks()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $book = $em->getRepository('AppBundle:Book')->sortBooksByTitleAsc();
-
-        return $this->render('base.html.twig',[
-           'booksAsc' => $book
-        ]);
     }
 }
