@@ -20,10 +20,10 @@ AppBundle\Entity\Note:
             type: string
             nullable: true
     lifecycleCallbacks: {  }
-    manyToOne:
-        book:
-            targetEntity: AppBundle\Entity\Book
-            inversedBy: note
-            joinColumn:
-                name: book_id
-                referencedColumnName: id
+#    manyToOne:
+#        book:
+#            targetEntity: AppBundle\Entity\Book
+#            inversedBy: note
+#            joinColumn:
+#                name: book_id
+#                referencedColumnName: id

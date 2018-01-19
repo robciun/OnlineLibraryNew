@@ -6,14 +6,15 @@
     <h1 class="page-header text-center">
         Comments
     </h1>
-    {#{{ render(controller(#}
-    {#'AppBundle:Note:searchNotes'#}
-    {#)) }}#}
+    {{ render(controller(
+    'AppBundle:Note:searchBar'
+    )) }}
 <table width="100%" cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered table-hover table-condensed dt">
     <thead>
     <tr>
         <th>User</th>
         <th>Note</th>
+        <th>Date created</th>
         <th>
             {% if is_granted('ROLE_USER') %}
                 <a href="{{ path('note_new') }}"
@@ -28,6 +29,7 @@
         <tr>
             <td>{{ note.username }}</td>
             <td>{{ note.note }}</td>
+            <td>{{ note.created|date("m/d/Y H:i") }}</td>
             <td>
                 {% if is_granted('ROLE_USER') %}
                     {% if note.userEmail == app.user.email or is_granted('ROLE_ADMIN') %}

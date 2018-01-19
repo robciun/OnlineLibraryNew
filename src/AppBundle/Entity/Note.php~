@@ -2,7 +2,6 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Entity\Book;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -48,7 +47,7 @@ class Note
     /**
      * @ORM\ManyToOne(targetEntity="Book", inversedBy="notes")
      * @ORM\JoinColumn(nullable=false)
-     * @var Book
+     * @var \AppBundle\Entity\Book
      */
     private $book;
 
@@ -90,11 +89,11 @@ class Note
     /**
      * Set book
      *
-     * @param Book $book
+     * @param \AppBundle\Entity\Book $book
      *
      * @return Note
      */
-    public function setBook(Book $book = null)
+    public function setBook(\AppBundle\Entity\Book $book = null)
     {
         $this->book = $book;
 
@@ -104,7 +103,7 @@ class Note
     /**
      * Get book
      *
-     * @return Book
+     * @return \AppBundle\Entity\Book
      */
     public function getBook()
     {

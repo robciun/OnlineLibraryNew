@@ -135,18 +135,45 @@ class NoteController extends Controller
 //    /**
 //     * @Route("/searchNoteBar", name="search_note_bar")
 //     * @param Request $request
-//     * @return Response
 //     */
 //    public function handleNotesSearchBar(Request $request)
 //    {
 //        $em = $this->getDoctrine()->getManager();
 //        $filter = $request->get('form')['search'];
 //
-//        $result = $em->getRepository('AppBundle:Note')->findAllNotes($filter);
+//        $result = $em->getRepository('AppBundle:Note')->getNotesFiltered($filter);
 //
 //        return $this->render('@App/comments.html.twig', [
 //            'searchResult' => $result,
-//            'book_list' => $result
+//            'note_list' => $result
 //        ]);
 //    }
+
+    public function searchBarAction()
+    {
+        $form = $this->createFormBuilder(null)
+            ->add('search', TextType::class)
+            ->getForm();
+
+        return $this->render('@App/search_note_bar.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/searchNoteBar", name="search_note_bar")
+     * @param Request $request
+     */
+    public function handleSearchBar(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $filter = $request->get('form')['search'];
+
+        $result = $em->getRepository('AppBundle:Note')->findAllQueryBuilder($filter);
+
+        return $this->render('@App/comments.html.twig', [
+            'searchResult' => $result,
+            'note_list' => $result
+        ]);
+    }
 }

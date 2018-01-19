@@ -14,6 +14,7 @@ use AppBundle\Entity\User;
 use AppBundle\Form\Type\ChangePasswordType;
 use AppBundle\Form\Type\RegistrationType;
 use AppBundle\Form\Type\UserType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -114,6 +115,34 @@ class UserController extends Controller
         }
 
         return $this->redirectToRoute('user_list');
+    }
+
+    public function searchBarAction()
+    {
+        $form = $this->createFormBuilder(null)
+            ->add('search', TextType::class)
+            ->getForm();
+
+        return $this->render('@App/search_user_bar.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/searchUserBar", name="search_user_bar")
+     * @param Request $request
+     */
+    public function handleSearchBar(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $filter = $request->get('form')['search'];
+
+        $result = $em->getRepository('AppBundle:User')->findAllQueryBuilder($filter);
+
+        return $this->render('@App/all_users_list.html.twig', [
+            'searchResult' => $result,
+            'user_list' => $result
+        ]);
     }
 
 }

@@ -58,4 +58,16 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
         return $items;
 //        $qb->createQuery("SELECT c FROM Category c WHERE c.id != 0")->getResult();
     }
+
+    public function findAllQueryBuilder($filter = '')
+    {
+        $qb = $this->createQueryBuilder('user');
+
+        if ($filter) {
+            $qb->andWhere('user.username LIKE :filter OR user.email LIKE :filter OR user.name LIKE :filter OR user.date_registered LIKE :filter')
+                ->setParameter('filter', '%'.$filter.'%');
+        }
+
+        return $qb->getQuery()->getResult();
+    }
 }
