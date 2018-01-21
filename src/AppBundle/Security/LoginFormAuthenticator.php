@@ -44,16 +44,6 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
         $isLoginSubmit = $request->getPathInfo() == '/login' && $request->isMethod('POST');
 
-//        if ($isLoginSubmit) {
-//
-//            $req = $request->request->get('login_form');
-//
-//            return [
-//                '_username' => $req['_username'],
-//                '_password' => $req['_password'],
-//            ];
-//        }
-
         if (!$isLoginSubmit) {
 
             return null;
@@ -82,49 +72,19 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     {
         $password = $credentials['_password'];
 
-//        if ($this->passwordEncoder->isPasswordValid($user, $password)) {
-//            return true;
-//        }
-
-//        if ($password == 'user') {
-//            return true;
-//        }
         if ($this->passwordEncoder->isPasswordValid($user, $password)) {
             return true;
         } else {
             return false;
         }
-//        if ($this->container->get('security.token_storage')->getToken()->getUser()->getPlainPassword() == $password) {
-//            return true;
-//        }
-//        return true;
-//        $dbPassword = $this->em->getRepository('AppBundle:User')->findOneBy(['plainPassword' => $password]);
-//
-//        if ($password == $dbPassword) {
-//            return true;
-//        }
-//        return false;
-        //return $this->em->getRepository('AppBundle:User')->findOneBy(['password' => $password]);
     }
 
-//    public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
-//    {
-//        // TODO: Implement onAuthenticationFailure() method.
-//    }
-//
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
         $response = new RedirectResponse($this->router->generate('home'));
 
         return $response;
-        //return $this->router->generate('home');
-        //return null;
     }
-
-//    public function supportsRememberMe()
-//    {
-//        // TODO: Implement supportsRememberMe() method.
-//    }
 
     protected function getLoginUrl()
     {

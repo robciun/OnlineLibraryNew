@@ -226,4 +226,33 @@ class Note
     {
         return $this->date_created;
     }
+    /**
+     * @var integer
+     */
+    private $user_id;
+
+
+    /**
+     * Set userId
+     *
+     * @param integer $userId
+     *
+     * @return Note
+     */
+    public function setUserId($userId)
+    {
+        $this->user_id = $userId;
+
+        return $this;
+    }
+
+    /**
+     * Get userId
+     *
+     * @return integer
+     */
+    public function getUserId()
+    {
+        return $this->user_id;
+    }
 }

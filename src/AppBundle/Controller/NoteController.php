@@ -36,9 +36,13 @@ class NoteController extends Controller
         if ($form->isValid() && $form->isSubmitted()) {
 
             $note->setUserEmail($this->container->get('security.token_storage')->getToken()->getUser()->getEmail());
-            $note->setUsername($this->container->get('security.token_storage')->getToken()->getUser()->getName());
+            if ($this->container->get('security.token_storage')->getToken()->getUser()->getName() !== null) {
+                $note->setUsername($this->container->get('security.token_storage')->getToken()->getUser()->getName());
+            } else {
+                $note->setUsername($this->container->get('security.token_storage')->getToken()->getUser()->getUsername());
+            }
             $note->setCreated(new \DateTime('now'));
-
+            $note->setUserId($this->container->get('security.token_storage')->getToken()->getUser()->getId());
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($note);
@@ -63,6 +67,12 @@ class NoteController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $note = $em->find(Note::class, $id);
+
+        if ($note->getUserId() != $this->getUser()->getId() && $this->getUser()->getRole() != 'ROLE_ADMIN') {
+            throw $this->createAccessDeniedException(
+                'It is not your note!'
+            );
+        }
 
         $form = $this->createForm(NoteType::class, $note);
 
@@ -92,7 +102,7 @@ class NoteController extends Controller
         $em = $this->getDoctrine()->getManager();
         $note = $em->find('AppBundle:Note', $entityId);
 
-        if ($note->getUserEmail() != $this->getUser()->getEmail() && $this->getUser()->getRole() != 'ROLE_ADMIN') {
+        if ($note->getUserId() != $this->getUser()->getId() && $this->getUser()->getRole() != 'ROLE_ADMIN') {
             throw $this->createAccessDeniedException(
                 'It is not your note!'
             );
@@ -120,34 +130,6 @@ class NoteController extends Controller
             'note_list' => $noteList,
         ]);
     }
-
-//    public function searchNotesAction()
-//    {
-//        $form = $this->createFormBuilder(null)
-//            ->add('search', TextType::class)
-//            ->getForm();
-//
-//        return $this->render('@App/search_note_bar.html.twig', [
-//            'form' => $form->createView()
-//        ]);
-//    }
-//
-//    /**
-//     * @Route("/searchNoteBar", name="search_note_bar")
-//     * @param Request $request
-//     */
-//    public function handleNotesSearchBar(Request $request)
-//    {
-//        $em = $this->getDoctrine()->getManager();
-//        $filter = $request->get('form')['search'];
-//
-//        $result = $em->getRepository('AppBundle:Note')->getNotesFiltered($filter);
-//
-//        return $this->render('@App/comments.html.twig', [
-//            'searchResult' => $result,
-//            'note_list' => $result
-//        ]);
-//    }
 
     public function searchBarAction()
     {

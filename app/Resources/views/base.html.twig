@@ -28,7 +28,7 @@
             <h1 class="logo">Online Library</h1>
             <ul class="navi">
                 <div style="margin-right: 10px">
-                    <li>Welcome {{ app.user ? app.user.name : 'Guest'  }}!</li>
+                    <li>Welcome {{ app.user and app.user.name ? app.user.name : ( app.user and app.user.username ? app.user.username : 'Guest') }}!</li>
                 </div>
                 {#<li class="search"><a href="#" class="js-header-search-toggle"><i class="fa fa-search"></i></a></li>#}
                 {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}

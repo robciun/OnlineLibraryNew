@@ -10,6 +10,7 @@ AppBundle\Entity\Note:
         username:
             type: string
             lenght: 255
+            nullable: true
         note:
             type: string
             lenght: 510
@@ -19,6 +20,9 @@ AppBundle\Entity\Note:
         user_email:
             type: string
             nullable: true
+        user_id:
+            type: integer
+            nullable: false
     lifecycleCallbacks: {  }
 #    manyToOne:
 #        book:

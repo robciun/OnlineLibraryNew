@@ -13,6 +13,7 @@ AppBundle\Entity\User:
         name:
             type: string
             length: 255
+            nullable: true
         surname:
             type: string
             length: 255

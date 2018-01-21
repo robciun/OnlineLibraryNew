@@ -10,6 +10,7 @@ namespace AppBundle\Form\Type;
 
 
 use AppBundle\Entity\User;
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -22,6 +23,14 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RegistrationType extends AbstractType
 {
+
+    protected $em;
+
+    public function __construct(EntityManager $em)
+    {
+        $this->em = $em;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -32,6 +41,7 @@ class RegistrationType extends AbstractType
 //                'label' => 'Username*'
             ])
             ->add('name', TextType::class, [
+                    'required' => true
 //                'label' => 'Name*'
             ])
             ->add('surname', HiddenType::class)
@@ -41,8 +51,15 @@ class RegistrationType extends AbstractType
                 'second_options' => array('label' => 'Repeat Password*'),
             ))
         ->add('terms', CheckboxType::class, [
-            'label' => 'I accept copyright'
+            'required' => true,
+            'label' => 'I accept copyright',
+            'data' => true,
         ]);
+    }
+
+    public function getName()
+    {
+        return 'user';
     }
 
     public function configureOptions(OptionsResolver $resolver)

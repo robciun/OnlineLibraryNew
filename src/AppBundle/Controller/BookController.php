@@ -53,9 +53,14 @@ class BookController extends Controller
         if ($form->isValid() && $form->isSubmitted()) {
 
             $book->setUserEmail($this->container->get('security.token_storage')->getToken()->getUser()->getEmail());
-            $book->setAuthor($this->container->get('security.token_storage')->getToken()->getUser()->getName());
+            if ($this->container->get('security.token_storage')->getToken()->getUser()->getName() !== null) {
+                $book->setAuthor($this->container->get('security.token_storage')->getToken()->getUser()->getName());
+            } else {
+                $book->setAuthor($this->container->get('security.token_storage')->getToken()->getUser()->getUsername());
+            }
             $book->setDateCreated(new \DateTime('now'));
             $book->setBookName($getResults);
+            $book->setUserId($this->container->get('security.token_storage')->getToken()->getUser()->getId());
             $em = $this->getDoctrine()->getManager();
             $em->persist($book);
             $em->flush();
@@ -106,6 +111,12 @@ class BookController extends Controller
 
         $book = $em->find(Book::class, $id);
 
+        if ($book->getUserId() != $this->getUser()->getId() && $this->getUser()->getRole() != 'ROLE_ADMIN') {
+            throw $this->createAccessDeniedException(
+                'It is not your book!'
+            );
+        }
+
         $media = $em->getRepository('AppBundle:Media')->getLast();
         $getResults = $media["file_name"];
 
@@ -141,7 +152,7 @@ class BookController extends Controller
         $em = $this->getDoctrine()->getManager();
         $book = $em->find('AppBundle:Book', $entityId);
 
-        if ($book->getUserEmail() != $this->getUser()->getEmail() && $this->getUser()->getRole() != 'ROLE_ADMIN') {
+        if ($book->getUserId() != $this->getUser()->getId() && $this->getUser()->getRole() != 'ROLE_ADMIN') {
             throw $this->createAccessDeniedException(
                 'It is not your book!'
             );

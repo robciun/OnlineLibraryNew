@@ -35,9 +35,9 @@ class UserController extends Controller
             /** @var User $user */
             $user = $form->getData();
             $em = $this->getDoctrine()->getManager();
+            $user->setDateRegistered(new \DateTime('now'));
             $em->persist($user);
             $em->flush();
-            $user->setDateRegistered(new \DateTime('now'));
             return $this->get('security.authentication.guard_handler')
                 ->authenticateUserAndHandleSuccess(
                     $user,
